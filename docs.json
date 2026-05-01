@@ -2,10 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "almond",
   "name": "TokenSupply",
-  "logo": {
-    "light": "https://media.brand.dev/4e1f9589-b1f7-49da-bfd7-71a7050c618b.svg",
-    "dark": "https://media.brand.dev/4e1f9589-b1f7-49da-bfd7-71a7050c618b.svg"
-  },
+  
   "favicon": "https://media.brand.dev/fb9ca0c6-e572-43f1-8205-108c2d7377e2.jpg",
   "colors": {
     "primary": "#e55b6b",
