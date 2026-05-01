@@ -1,0 +1,46 @@
+---
+title: "Connect a custom domain to your TokenSupply storefront"
+description: "Add your own domain, configure the required DNS records, and serve your public store page and customer delivery portal from a fully branded URL."
+sidebarTitle: "Custom Domains"
+---
+
+By default your store is accessible at `tokensupply.in/s/{token_id}`. A custom domain lets you serve your store and customer delivery portal from your own URL — fully branded with automatic SSL.
+
+## Adding a domain
+
+<Steps>
+  <Step title="Open domain settings">
+    Go to **Settings → Domain** and click **Add Domain**.
+  </Step>
+  <Step title="Enter your domain">
+    Type the domain you want to connect (e.g. `store.yourbrand.com`). Make sure you have access to the DNS settings at your domain registrar before continuing.
+  </Step>
+  <Step title="Add the required DNS records">
+    Log in to your domain registrar and add the following records. Remove any existing `A` records for `@` and `www` first to avoid conflicts.
+
+    | Type | Name | Value |
+    |------|------|-------|
+    | A | @ | 185.158.133.1 |
+    | A | www | 185.158.133.1 |
+    | TXT | _lovable | Shown on the Domain settings page after you enter your domain |
+  </Step>
+  <Step title="Verify and connect">
+    Return to **Settings → Domain** and click **Verify & Connect**. TokenSupply checks your DNS records and provisions SSL automatically once verification passes.
+  </Step>
+</Steps>
+
+<Note>
+SSL is provisioned automatically once DNS is verified — no manual certificate steps, CSR uploads, or renewal reminders are needed.
+</Note>
+
+## Domain statuses
+
+| Status | Meaning |
+|--------|---------|
+| **Verifying** | Waiting for DNS propagation — check again in a few hours |
+| **Active** | Live and serving your storefront and customer portal |
+| **Failed** | DNS check failed; review your records at the registrar and click **Verify DNS** again |
+
+<Info>
+DNS propagation can take up to 72 hours depending on your registrar and TTL settings. The verification status updates automatically as propagation completes — you do not need to re-submit the form. Use a tool like [DNSChecker.org](https://dnschecker.org) to monitor progress across global nameservers.
+</Info>

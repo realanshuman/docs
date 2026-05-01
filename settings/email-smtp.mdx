@@ -1,0 +1,59 @@
+---
+title: "Set up transactional email and SMTP for your store"
+description: "Configure SMTP so transactional emails send from your own domain. Covers credentials, encryption, fallback behaviour, and the built-in test send."
+sidebarTitle: "Email & SMTP"
+---
+
+TokenSupply sends transactional emails for order deliveries, vendor invites, PO confirmations, and invoices. Configuring SMTP lets these emails come from your own domain and sender name, giving customers a consistent, branded experience.
+
+## Configuring SMTP
+
+<Steps>
+  <Step title="Open email settings">
+    Go to **Settings → Email Setup** and toggle the **Email Service** switch to **Active**.
+  </Step>
+  <Step title="Enter SMTP credentials">
+    Fill in all required fields:
+    - **SMTP Host** — your mail server hostname (e.g. `smtp.gmail.com`)
+    - **Port** — typically `587` for TLS or `465` for SSL
+    - **Username** — your SMTP login (usually your email address)
+    - **Password** — your SMTP password or app-specific password
+    - **From Email** — the address that appears in the `From` field
+    - **From Name** — the display name customers see (e.g. your store name)
+  </Step>
+  <Step title="Choose encryption">
+    Select **TLS**, **SSL**, or **None**. TLS on port 587 is recommended for most providers.
+  </Step>
+  <Step title="Send a test email">
+    Click **Save Settings**, then click **Send Test Email**. A test message is sent to your account email — confirm delivery before going live.
+  </Step>
+</Steps>
+
+## Fallback behaviour
+
+If SMTP is not configured or a send attempt fails, TokenSupply automatically falls back to Resend for critical transactional emails — so customers and vendors are never blocked from receiving order deliveries, invites, or notifications.
+
+## Emails sent by TokenSupply
+
+| Email | Triggered by |
+|-------|-------------|
+| Order delivery | New order completion or re-send delivery action |
+| Vendor invite | Invite to Portal on the vendor detail page |
+| PO confirmation | Confirming a purchase order |
+| PO status update | PO lifecycle transitions (Sent → Paid → Closed, etc.) |
+| Invoice | Sending an invoice to a customer |
+| Password reset | Reset password request from the sign-in page |
+
+## Tips
+
+<Tip>
+If you use Gmail or Google Workspace, generate an **app-specific password** in your Google account security settings. Your main account password will not work when 2-Step Verification is enabled.
+</Tip>
+
+<Tip>
+**TLS on port 587** is the most widely supported default across major providers including Gmail, Outlook, and Mailgun. Use SSL on port 465 only if your provider specifically requires it.
+</Tip>
+
+<Tip>
+Always click **Send Test Email** after changing credentials or switching providers. A successful test confirms end-to-end delivery before any real customer emails are affected.
+</Tip>

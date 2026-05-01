@@ -1,0 +1,57 @@
+---
+title: "Secure your account with 2FA and manage your profile"
+description: "Update your name, avatar, and email, enable TOTP two-factor authentication, and manage sessions and password recovery on TokenSupply."
+sidebarTitle: "Account & Security"
+---
+
+Your account settings are separate from store settings — they control your personal profile, two-factor authentication, and session management. Access them via the user menu in the topbar or navigate to **/account**.
+
+## Profile settings
+
+Open **Account → Profile** to update your personal details:
+
+- **First name** and **last name** — editable inline; click **Edit** next to any field
+- **Language**, **timezone**, and **default currency** — apply to your personal workspace view
+- **Email address** and **role** — shown read-only; email changes are handled through your authentication provider
+
+## Enabling two-factor authentication (2FA)
+
+<Steps>
+  <Step title="Open security settings">
+    Go to **Account → Security**.
+  </Step>
+  <Step title="Start 2FA setup">
+    Click **Set up two-factor authentication**. TokenSupply walks you through the TOTP setup process.
+  </Step>
+  <Step title="Scan the QR code">
+    Open your authenticator app and scan the QR code displayed on screen. The issuer appears as **tokensupply.in** in your app so it is easy to identify.
+  </Step>
+  <Step title="Enter the verification code">
+    Type the current 6-digit code from your authenticator app into the confirmation field.
+  </Step>
+  <Step title="Confirm">
+    Click **Verify & Enable**. After enabling, every sign-in requires a 6-digit TOTP code from your authenticator app in addition to your password.
+  </Step>
+</Steps>
+
+<Tip>
+Use **1Password** or **Authy** for TOTP — both support encrypted backups and multi-device sync, so you are not locked out if you lose your phone. Google Authenticator also works but does not back up codes automatically.
+</Tip>
+
+## Password recovery
+
+Use the **Reset Password** link on the sign-in page to trigger a recovery email. The recovery flow is MFA-aware and avoids lockouts for accounts with 2FA enabled.
+
+You can also change your password directly from **Account → Security → Password** when you are signed in — enter your new password, confirm it, and click **Update Password**.
+
+## Sessions
+
+The **Active sessions** section under **Account → Security** shows your current session with the last sign-in timestamp. Click **Sign out** to terminate the session immediately, or **Sign out of all devices** to revoke all active sessions globally.
+
+## Account deletion
+
+<Warning>
+Account deletion is permanent and irreversible. All store data associated with the account is removed and cannot be recovered.
+</Warning>
+
+The **Delete Account** option is only available to Super Admins of a store-owning account. It is hidden for Vendor roles and team members on shared stores.

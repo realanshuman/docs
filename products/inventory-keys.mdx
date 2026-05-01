@@ -1,0 +1,76 @@
+---
+title: "Add and manage digital inventory keys in TokenSupply"
+description: "Add keys individually or in bulk, prevent duplicates, reveal masked values with a full audit trail, and track every key from available to sold."
+sidebarTitle: "Inventory & Keys"
+---
+
+TokenSupply stores your digital keys in an encrypted vault — no key value is ever exposed by default. Every action taken on a key, whether adding it, revealing it, copying it, selling it, or replacing it, is logged with the actor's identity and a timestamp. This audit trail means you always know who accessed what and when.
+
+## Adding inventory
+
+Open a product's **Inventory** tab to add keys. Three methods are available:
+
+### Single key
+
+Click **Add Item** and enter one key inline. You can optionally set:
+
+- **Expiry date** — useful for time-limited codes or gift cards
+- **Notes** — internal context visible to your team
+
+Single-key entry is best for ad-hoc additions or corrections.
+
+### Bulk upload
+
+Click **Add Item → Bulk** and paste your keys directly into the text area, one key per row, or upload a CSV or TXT file. The UI validates the input in real time before submission.
+
+<Note>
+  For **Account**-type products, use the format `username | password` per line when uploading in bulk.
+</Note>
+
+### From a purchase order
+
+When a vendor submits a stock file on a confirmed purchase order, those keys flow directly into the product's inventory once the stock file is approved. You do not need to re-enter them manually — they appear under the **Inventory** tab with the PO number linked for traceability.
+
+## Duplicate prevention
+
+Every key is stored with a unique reference. If you attempt to add a key that already exists in your inventory, TokenSupply rejects it. In the bulk upload UI, duplicates are detected in real time and flagged inline before you submit — so you catch them before they hit your catalog, not after.
+
+## Masked keys and Reveal
+
+All key values are masked by default in every list and table view. To see the full value, click **Reveal** on any key row. This opens the **Key Reveal Modal**, which displays the unmasked value and a **Copy Key** button.
+
+<Warning>
+  There is no inline copy-to-clipboard on masked keys. Every reveal goes through the Reveal modal so the action can be logged. This is intentional — it ensures every key access is auditable, not just the ones someone remembered to log manually.
+</Warning>
+
+## Key statuses
+
+Each key moves through a defined lifecycle. The current status appears as a badge on every row.
+
+| Status | Meaning |
+|--------|---------|
+| **Available** | Ready for sale or delivery — counts toward active inventory |
+| **Reserved** | Held for a pending order — temporarily unavailable |
+| **Sold** | Delivered to a customer — counts toward fulfilled inventory |
+| **Invalid** | Marked non-functional — excluded from sale |
+
+You can manually update a key's status from its row menu, or use bulk mode to update multiple keys at once.
+
+## Replacements
+
+When a key has been sold or marked invalid and needs to be swapped out, use **Replace Key** on the item. This lets you enter a new key value in place of the original. The replacement is recorded as a discrete event: the old value, the new value, the timestamp, and the actor are all preserved in the item's replacement history.
+
+Replacement history is viewable per key by opening the history dialog from the item's row menu. If the replacement was triggered by a support ticket, the ticket reference is linked directly in the history entry.
+
+## Activity log
+
+Every action taken on a key is captured in a per-item activity log:
+
+- **Add** — when the key was created and by whom
+- **Reveal** — every time the value was unmasked, with actor and timestamp
+- **Copy** — every clipboard copy from the Reveal modal
+- **Status change** — transitions between Available, Reserved, Sold, and Invalid
+- **Replace** — replacement events with old and new values
+- **Ticket link** — when the key is linked to or unlinked from a support ticket
+
+Open the activity log for any key by clicking the **Activity** icon on its row. You can also export your full inventory to CSV or TXT from the toolbar for offline auditing.

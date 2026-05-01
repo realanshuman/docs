@@ -1,0 +1,51 @@
+---
+title: "Vendor offers: per-supplier pricing and delivery times"
+description: "Map per-supplier pricing and delivery times to products. Vendor offers power PO auto-fill and surface the cheapest source in your product catalog."
+sidebarTitle: "Vendor Offers"
+---
+
+A vendor offer is a price and delivery-time mapping between one vendor and one product. Offers serve two purposes: they auto-fill pricing when you create a purchase order, and they surface the lowest-cost source per product across your entire vendor catalogue — so you can make faster, better-informed procurement decisions.
+
+## What vendor offers do
+
+<CardGroup cols={2}>
+  <Card title="PO auto-fill" icon="bolt">
+    When you select a vendor and product on the **New Purchase Order** form, TokenSupply looks up the active offer for that pairing and pre-fills the unit price and delivery time. You can still override the values before saving.
+  </Card>
+  <Card title="Lowest price visibility" icon="tag">
+    The **Products** list highlights the **Lowest Price** column for each product, derived from all active vendor offers. This lets you spot the cheapest source at a glance without opening individual vendor records.
+  </Card>
+</CardGroup>
+
+## Where to manage offers
+
+You can create, edit, and deactivate vendor offers from three places:
+
+| Location | How to get there |
+|----------|-----------------|
+| **Per product** | Open any product → **Vendor Offers** tab. Manage all supplier offers for that product in one view. |
+| **Per vendor** | Open any vendor → **Products / Offers** tab. See and manage all offers that vendor has across your product catalogue. |
+| **Vendor portal** | Invited vendors can view and edit their own offers under **Products** in their constrained portal. |
+
+## Offer fields
+
+Each vendor offer has four fields:
+
+| Field | Notes |
+|-------|-------|
+| **Product** | Selected via the search picker. Each offer is scoped to a single product. |
+| **Price** | Expressed in the vendor's default currency. |
+| **Delivery Time** | One of: **Instant**, **Within 1 hour**, **Within 24 hours**, or **Custom**. |
+| **Status** | Only **Active** offers participate in PO auto-fill and Lowest Price calculations. Deactivating an offer removes it from both features without deleting the record. |
+
+## Vendor privacy
+
+Vendors who access their offers through the portal can see their own active offer for any given product, but they cannot see what other vendors are charging.
+
+<Note>
+  Vendors receive relative pricing signals only — for example, "your offer is the lowest" or "lower offers exist from other suppliers." Competitor identities and exact competitor prices are never exposed to vendor users.
+</Note>
+
+## Offer history
+
+Deactivating an offer does not delete it. The full history of all offers — including inactive ones — is preserved on both the product and vendor records. This gives you an audit trail for pricing changes and procurement decisions over time.

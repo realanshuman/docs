@@ -1,0 +1,60 @@
+---
+title: "Store settings: configure your TokenSupply workspace"
+description: "Map of all settings tabs — General, Email Setup, Domain, Notifications, and Store Page — and where to find each configuration option."
+sidebarTitle: "Settings Overview"
+---
+
+TokenSupply's Settings module (sidebar → **Settings**) gives you five configuration tabs covering everything from your business identity and branding to email delivery and your public storefront.
+
+## Settings tabs
+
+| Tab | What lives here |
+|-----|-----------------|
+| **General** | Business details, branding (logo + colours), Order ID Format, store address and contact |
+| **Email Setup** | SMTP host, credentials, from-name / from-email, test send |
+| **Domain** | Custom domains and DNS verification |
+| **Notifications** | Per-event email preferences and digest frequency |
+| **Store Page** | Public storefront slug and visibility |
+
+<Note>
+**Templates** and **Billing & Plans** are separate top-level sidebar items — they are not Settings tabs.
+</Note>
+
+## Order ID format
+
+Navigate to **Settings → General → Order ID Format** to customise how order IDs appear across your admin workspace, customer portal, and PDFs.
+
+- **Prefix** — alphanumeric string of your choosing (e.g. `ORD`, `TS2026`)
+- **Sequence** — fixed 5 digits, zero-padded (`00001` → `99999`)
+- **Full format** — `{PREFIX}-{00001}`
+
+Sequences are scoped per store and never reused, so every order ID across your store is permanently unique.
+
+## Store page
+
+Navigate to **Settings → Store Page** to control your public storefront.
+
+- Edit your `token_id` slug — your storefront URL becomes `tokensupply.in/s/{token_id}` (or your custom domain once verified)
+- Most fields auto-save on blur — no explicit save button needed
+- Toggle the **Public / Private** visibility switch to hide or show your store page
+
+<Info>
+When your store page is set to private, the page is hidden from public browsing but tokenised customer portal links continue to work — your existing customers are never blocked.
+</Info>
+
+## Notifications
+
+Navigate to **Settings → Notifications** to control how and when TokenSupply alerts you.
+
+- Configure per-event email preferences for each notification type below
+- Set digest frequency: **Instant**, **Hourly**, **Daily**, or **Weekly**
+
+| Notification type | Triggered by |
+|-------------------|-------------|
+| PO updates | Status changes, invoice and stock approvals, due-date reminders |
+| Ticket events | New tickets, replies, resolutions |
+| Team | Member joins (vendor vs staff), role changes |
+| Expiring inventory | Keys expiring within your configured window |
+| Low stock | Products falling under your configured threshold |
+| Stock file rejected | Vendor needs to re-upload a stock file |
+| Low credits | Billing approaching your credit limit |

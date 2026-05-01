@@ -1,0 +1,58 @@
+---
+title: "Connect Shopify to TokenSupply for auto-fulfilment"
+description: "Link your Shopify store, map products to listings, and automatically deliver digital keys to customers the moment an order is paid."
+sidebarTitle: "Shopify"
+---
+
+The Shopify integration lets TokenSupply listen for paid orders and instantly deliver a digital key to your customer — no manual steps required. Once connected, fulfilment happens automatically from the moment a Shopify order is marked paid.
+
+## Connecting Shopify
+
+<Steps>
+  <Step title="Open the Shopify integration page">
+    Go to **Integrations → Shopify** in the sidebar.
+  </Step>
+  <Step title="Enter your credentials">
+    Enter your **Shop Domain** (e.g. `your-store.myshopify.com`) and your **Admin API access token** (found under Shopify Admin → **Settings → Apps → Develop apps**).
+  </Step>
+  <Step title="Validate the connection">
+    TokenSupply validates your credentials, lists your Shopify products, and shows the connection status. Use **Test Connection** on the integration page to confirm your credentials are working at any time.
+  </Step>
+</Steps>
+
+## Mapping products
+
+On any product's **Sales Channels** tab, map it to a Shopify variant. Each mapping has two settings:
+
+- **Status** — `Active` means the mapping is live; `Paused` suspends it without deleting it.
+- **Auto Deliver** — when enabled, TokenSupply automatically reserves and delivers a key the moment a matching Shopify order is paid.
+
+You can also manage all Shopify mappings in bulk from **Sales Channel → Shopify**, without opening each product individually.
+
+<Warning>
+  Only enable **Auto Deliver** on products that have sufficient stock. If inventory runs out, TokenSupply cannot fulfil the order and a backorder situation may occur.
+</Warning>
+
+## Order flow
+
+When a paid Shopify order arrives, TokenSupply follows these steps automatically:
+
+1. Reserves a key from your inventory
+2. Fulfils the Shopify line item via the API
+3. Emails the customer a tokenised delivery link to your customer portal
+
+The customer clicks the link, reveals their key, and the order is marked completed. No manual action is required from you.
+
+## Tips
+
+<Tip>
+  Keep your Admin API token scoped to the minimum permissions required. TokenSupply only needs read access to products and orders, and write access to fulfilment.
+</Tip>
+
+<Tip>
+  Use **Auto Deliver** only for products with healthy, ongoing stock. For limited-edition or low-stock products, consider leaving Auto Deliver off and fulfilling manually to avoid backorders.
+</Tip>
+
+<Tip>
+  If a Shopify order is cancelled upstream, any key that was reserved is automatically released back to your inventory — no manual intervention needed.
+</Tip>

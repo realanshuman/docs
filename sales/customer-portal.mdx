@@ -1,0 +1,49 @@
+---
+title: "Customer delivery portal: key reveal and link management"
+description: "Learn the branded delivery portal URL format, what customers see on the portal, how the Reveal action works, and how refunds and re-sends are handled."
+sidebarTitle: "Customer Portal"
+---
+
+Every order on TokenSupply — whether from Shopify, G2A, or a manual order — generates a unique, branded delivery portal link for the customer. This page explains how that portal works, what customers see, and how you manage links after delivery.
+
+## Portal URL format
+
+Each delivery link follows the format:
+
+```
+/s/{token_id}/order/{orderToken}
+```
+
+The `token_id` is your store's slug, configured in **Settings → Store Page**. The `orderToken` is a unique, single-use token generated per delivery.
+
+## What customers see
+
+When a customer opens the portal link, they see:
+
+- Your **store branding** — logo and colours from **Settings → General**
+- A list of **delivered keys** with status badges (Pending, Collected, or Revoked)
+- A **Reveal** button on each key — clicking it unmasks the key value and marks the order complete
+- **Download buttons** for any attached files included with the order
+
+Keys cannot be hidden again once revealed. The customer can copy each key individually or export all revealed keys as a text file.
+
+## Refunds
+
+When you mark an order as refunded from the transaction detail page, TokenSupply automatically:
+
+1. Revokes all associated portal links — the customer sees an "Order Cancelled" message if they visit an old link
+2. Returns any **unrevealed** keys to your inventory so they are available for future orders
+
+Revealed keys are not returned to inventory, since the customer has already seen the value.
+
+## Re-sending
+
+Use **Re-send delivery** on the transaction detail page to email the customer the portal link again. This is useful when a customer loses the original email or the delivery email bounces.
+
+<Note>
+  Each re-send generates a fresh delivery token. The previous portal link is immediately invalidated, so old links cannot be used after a re-send. Share the new link directly from the transaction detail page if the customer needs it immediately.
+</Note>
+
+## Custom branding
+
+The portal uses your store's logo and brand colours as configured in **Settings → General**. Customers see your store name in the page header and footer — there is no TokenSupply branding shown to end customers by default.

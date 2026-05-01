@@ -1,0 +1,50 @@
+---
+title: "Invite team members and control role-based permissions"
+description: "Add Admin and Support members, control role-based permissions, review pending invitations, and audit team activity with the event log."
+sidebarTitle: "Team Management"
+---
+
+TokenSupply's team management lets you grow your operations by inviting staff with appropriate roles. Each role has a tailored experience — from full Super Admin access to the focused Support view.
+
+## Roles and permissions
+
+| Role | Team | Products | Analytics | Billing | Description |
+|------|------|----------|-----------|---------|-------------|
+| **Super Admin** | ✅ | ✅ | ✅ | ✅ | Store owner — full access including billing and account deletion |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | Operations leads — manage team, billing, and integrations |
+| **Support** | ❌ | ✅ | ❌ | ❌ | Day-to-day operations: tickets, inventory, and order fulfilment |
+| **Vendor** | ❌ | Own only | Own only | ❌ | External suppliers — limited to their own POs, offers, and products |
+
+## Inviting team members
+
+<Steps>
+  <Step title="Open Team">
+    Click **Team** in the sidebar.
+  </Step>
+  <Step title="Open the invite dialog">
+    Click **Invite** in the top-right corner. This button is only visible to Super Admins and Admins.
+  </Step>
+  <Step title="Enter email and select role">
+    Type the invitee's email address and select either **Admin** or **Support** as their role.
+  </Step>
+  <Step title="Send the invite">
+    Click **Send Invite**. The invitation appears in the **Invites** tab until the user signs up with that exact email address and joins the store.
+  </Step>
+</Steps>
+
+<Note>
+Vendor invitations are sent from the vendor's detail page (**Purchases → Vendors → [Vendor] → Invite to Portal**), not from the Team → Invite flow. See [Managing Vendors](/vendors/managing-vendors) for details.
+</Note>
+
+## Team page tabs
+
+| Tab | Visible to | What it shows |
+|-----|-----------|---------------|
+| **Members** | All roles | Staff members and their roles |
+| **Vendors** | All roles | Vendor accounts that have portal access |
+| **Invites** | Admin only | Pending and accepted invitations |
+| **Activity** | Admin only | Administrative event audit log |
+
+## Activity log
+
+The Activity tab captures a full audit trail of administrative events including role changes, invites sent, and member removals. Each entry records the actor, target, timestamp, and any relevant details — useful for compliance and handover reviews.

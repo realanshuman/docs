@@ -1,0 +1,46 @@
+---
+title: "Connect G2A marketplace and auto-deliver digital keys"
+description: "Set up G2A API credentials, map product listings, configure auto-sync intervals, and auto-deliver keys to G2A buyers from your inventory."
+sidebarTitle: "G2A"
+---
+
+The G2A integration connects your TokenSupply inventory to G2A's marketplace, letting you list products and auto-deliver keys to buyers without manual intervention. Once set up, stock levels sync on a schedule and orders fulfil automatically.
+
+## Setting up
+
+<Steps>
+  <Step title="Open the G2A integration page">
+    Go to **Integrations → G2A** in the sidebar.
+  </Step>
+  <Step title="Enter your API credentials">
+    Enter your **Client ID**, **Client Secret**, **API URL** (default: `https://api.g2a.com`), and **Token URL** (default: `https://api.g2a.com/oauth/token`). These come from your G2A Dashboard.
+
+    TokenSupply also auto-generates **Contract API credentials** for your store. These are used by G2A to authenticate when calling your contract endpoint for real-time auto-delivery. Copy them and paste them into your G2A Dashboard.
+  </Step>
+  <Step title="Save and accept contract terms">
+    Save your credentials and accept the G2A contract terms to activate the integration.
+  </Step>
+</Steps>
+
+## Managing listings
+
+From the G2A integration detail page you can:
+
+- Map internal products to G2A offers
+- Set **retail** and **business** prices, and declared stock per listing
+- Toggle **Active** and **Auto Deliver** per listing
+- View dropshipping offers from other G2A sellers
+
+Changes to listings take effect on the next sync cycle.
+
+## Auto sync
+
+Enable **Auto Sync** and choose a sync interval (every 1, 5, 10, 15, 30, or 60 minutes). Syncs run automatically on schedule — stock levels and pricing are pushed to G2A without any manual action. Manual sync buttons have intentionally been removed in favour of scheduled, deterministic syncs.
+
+<Note>
+  G2A enforces API request rate limits. You may see **ERR429** errors during burst periods. Sync intervals are tuned to stay within G2A's published quotas, so if you see ERR429 occasionally, it will self-resolve on the next sync cycle.
+</Note>
+
+## Rate limits
+
+G2A enforces request limits per API key. If your sync frequency is too high relative to your listing count, you may encounter rate limit errors. The default sync intervals are designed to stay comfortably within published quotas. If you manage a very large catalogue, consider using a longer sync interval.

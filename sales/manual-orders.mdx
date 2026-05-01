@@ -1,0 +1,54 @@
+---
+title: "Create manual orders for direct sales and B2B deals"
+description: "Log direct and B2B sales that happen outside Shopify or G2A, pick or create a customer, set pricing, and generate a customer portal delivery link."
+sidebarTitle: "Manual Orders"
+---
+
+Manual orders let you record sales that happen outside Shopify or G2A — direct customer deals, B2B bulk orders, replacements, or gifts — and still deliver keys through the branded customer portal. Every manual order generates a tokenised delivery link automatically.
+
+## Creating an order
+
+<Steps>
+  <Step title="Go to Create Order">
+    Navigate to **Transactions → Create Order** in the sidebar.
+  </Step>
+  <Step title="Pick a customer">
+    Search for an existing customer by name, email, or CUS-ID. If the customer doesn't exist yet, click **New Customer** to create one inline without leaving the page.
+  </Step>
+  <Step title="Select a product and set pricing">
+    Choose a product, enter the quantity and unit price, and select a currency. Concatenated keys (multiple keys delivered in one order) are supported — set the quantity to match the number of keys you want to deliver.
+  </Step>
+  <Step title="Create the order">
+    Click **Create Order**. TokenSupply reserves keys from inventory, creates the transaction, and generates a customer portal delivery link. If an email template is configured and the customer has an email address, the delivery link is sent automatically.
+  </Step>
+  <Step title="Customer reveals the key">
+    When the customer opens the portal link and clicks **Reveal**, the key is unmasked and the order status automatically moves to **Completed**. The portal link can be re-sent from the transaction detail page at any time.
+  </Step>
+</Steps>
+
+<Tip>
+  You can re-send the delivery link at any time from the transaction detail page — useful if a customer loses the original email. Each re-send generates a new delivery token, safely invalidating the old link.
+</Tip>
+
+## Order statuses
+
+| Status | Meaning |
+|--------|---------|
+| **Pending** | Order created, awaiting key delivery |
+| **Completed** | Customer revealed the key in the portal |
+| **Failed** | A delivery error occurred |
+| **Refunded** | Order refunded — keys are auto-revoked |
+
+## Transactions list
+
+**Transactions → All Transactions** shows the full ledger across all channels — Manual, Shopify, G2A, and any future integrations. Use the **Platform** filter to narrow results to manual orders only.
+
+## Transaction detail
+
+Opening any transaction shows:
+
+- **Platform source** — Manual, Shopify, G2A, etc.
+- **Most recent delivery token** — the active portal link
+- **Delivery timeline** — a chronological log of key delivery events
+
+Issuing a refund from the transaction detail page automatically revokes all active customer portal links and may return unrevealed keys to inventory.

@@ -1,0 +1,86 @@
+---
+title: "Add and manage products in your TokenSupply catalog"
+description: "Create digital products with SKUs, categories, and delivery settings. Manage statuses, view inventory, and track vendor pricing across your catalog."
+sidebarTitle: "Adding Products"
+---
+
+Products are the central entity in TokenSupply — everything else in the platform attaches to them. Your inventory keys live under a product's **Inventory** tab, vendor pricing is tracked as offers against a product, sales channel listings map to a product, and every purchase order references one. Before you can stock inventory or connect a marketplace listing, you need a product in your catalog.
+
+## Creating a product
+
+<Steps>
+  <Step title="Open the Add Product form">
+    Go to **Products → Add Product** in the sidebar. The form uses a centred, step-by-step layout.
+  </Step>
+  <Step title="Fill in product details">
+    Complete the required fields:
+
+    - **Product Name** — the display name across the platform
+    - **SKU** — your internal stock-keeping unit identifier
+    - **Brand** — the publisher or brand (e.g. Microsoft, Steam, Google)
+    - **Functional Category** — pick from the strict catalog: Gaming, Software & Apps, Gift Cards, Subscriptions, Entertainment, Education, Security & VPN, Cloud Services, Operating Systems, or Productivity
+    - **Product Type** — choose one of **Key**, **Account**, or **Gift Card**
+  </Step>
+  <Step title="Set delivery configuration">
+    Under **Listing Configuration**, select the expected delivery time:
+
+    - **Instant** — delivered immediately on order
+    - **Within 1 hour** — fulfilled within the hour
+    - **Within 24 hours** — fulfilled by the next business day
+  </Step>
+  <Step title="Save the product">
+    Submit the form to create the product. It appears in your catalog immediately with the status you set.
+  </Step>
+</Steps>
+
+## Product statuses
+
+Every product has one of three statuses that controls its visibility and sellability across the platform.
+
+| Status | What it means |
+|--------|---------------|
+| **Enabled** | Live and sellable — appears in listings and is eligible for order fulfillment |
+| **Disabled** | Temporarily hidden — removed from active listings but all data is preserved |
+| **Discontinued** | Archived — no longer sold; kept for historical order and reporting purposes |
+
+You can change a product's status at any time from the product detail page using **More Actions**.
+
+## Product detail page
+
+Opening any product takes you to its detail page, which gives you a quick-stats strip (in-stock count, average cost, vendor count, open tickets) and five tabs:
+
+<CardGroup cols={2}>
+  <Card title="Overview" icon="info">
+    Core product fields — SKU, Brand, Category, Type, Status — plus a Summary card showing total vendor count, purchase orders, and inventory value.
+  </Card>
+  <Card title="Inventory" icon="package">
+    All inventory keys for this product. Add, filter, bulk-manage, and reveal keys directly from this tab.
+  </Card>
+  <Card title="Sales Channels" icon="globe">
+    Active marketplace listings mapped to this product across your connected channels.
+  </Card>
+  <Card title="Vendor Offers" icon="tag">
+    Per-vendor pricing and delivery times. Used to auto-fill purchase orders and compare sourcing costs.
+  </Card>
+  <Card title="Activity" icon="clock">
+    A timestamped log of all significant actions taken on this product.
+  </Card>
+</CardGroup>
+
+## List view
+
+The **Products** list is a high-density view showing every product's status, available inventory, category, vendor count, and **Lowest Price** — the cheapest active vendor offer on record.
+
+You can filter by status tab (All / Active / Draft / Archived), narrow by Category or Product Type, and sort by name, inventory, price, vendors, or date created.
+
+<Tip>
+  Use the **Lowest Price** column to spot pricing outliers across your vendor offers at a glance. If one vendor is significantly cheaper than the others, it's a signal to consolidate purchasing — or to check whether the offer is still active.
+</Tip>
+
+## Editing and managing
+
+To modify a product, open it and select **More Actions → Edit Product**. All fields set at creation can be updated.
+
+To change a product's visibility, use **More Actions** to switch between **Enabled**, **Disabled**, and **Discontinued** statuses. This is non-destructive — inventory, vendor offers, and historical orders are retained regardless of status.
+
+To permanently remove a product, choose **More Actions → Delete Product**. You must type `DELETE` to confirm. Deletion unlinks all associated purchase orders and vendor mappings and cannot be undone.

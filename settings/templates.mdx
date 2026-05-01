@@ -1,0 +1,55 @@
+---
+title: "Create email and document templates with merge fields"
+description: "Build reusable email and document templates using merge fields like delivery link, customer name, and order ID — with live preview before saving."
+sidebarTitle: "Templates"
+---
+
+TokenSupply's Templates module (sidebar → **Templates**) lets you create reusable email and document templates for order deliveries, invoices, and vendor communications. Merge fields fill in dynamically at send time so each message is personalised without manual editing.
+
+## Available merge fields
+
+| Field | Replaced with |
+|-------|---------------|
+| `{{delivery_link}}` | The tokenised customer portal URL for the order |
+| `{{customer_name}}` | The customer's display name |
+| `{{order_id}}` | The order or transaction ID |
+| `{{key}}` | The digital key value being delivered |
+
+## Template editor
+
+The editor supports two modes:
+
+- **Plain text** — ideal for simple, readable emails without HTML formatting
+- **HTML** — full control over layout with inline styles and structure
+
+A live **Preview** renders your template exactly as it will appear to the recipient, including merge field substitution. Always check the preview before saving to catch formatting issues early.
+
+## Attachments
+
+Templates handle MIME types correctly — PDFs, images, and plain-text files all render properly in recipients' inboxes rather than appearing as garbled attachments.
+
+## Creating a template
+
+<Steps>
+  <Step title="Open Templates">
+    Click **Templates** in the sidebar.
+  </Step>
+  <Step title="Create a new template">
+    Click **New Template** in the top-right corner.
+  </Step>
+  <Step title="Name your template and choose a type">
+    Enter a descriptive name (e.g. `Order Delivery — Standard`) and select **Plain Text** or **HTML** as the template type.
+  </Step>
+  <Step title="Write your content">
+    Use the editor to write your email or document content. Add a **Subject** line if this template will be used for email sends.
+  </Step>
+  <Step title="Insert merge fields">
+    Type merge fields directly where you want dynamic content — for example, `Hi {{customer_name}}, your key is {{key}}.`
+  </Step>
+  <Step title="Preview your template">
+    Click **Preview** to see how the template renders, including how merge fields will appear when substituted.
+  </Step>
+  <Step title="Save">
+    Click **Save**. Your template is now available to use across order deliveries, vendor communications, and invoice sends.
+  </Step>
+</Steps>

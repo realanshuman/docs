@@ -1,0 +1,61 @@
+---
+title: "Create, export, and send customer invoices in TokenSupply"
+description: "Build professional invoices with inclusive or exclusive tax, export them as PDFs, and send them directly to customers via email from your workspace."
+sidebarTitle: "Invoices"
+---
+
+TokenSupply's invoicing module lets you create professional invoices with flexible tax settings, export PDFs, and email them directly to customers — all from your workspace. Invoices follow a simple two-status lifecycle: **Draft** for editing, **Confirmed** for locking.
+
+## Creating an invoice
+
+<Steps>
+  <Step title="Open Create Invoice">
+    Go to **Sales → Invoices → Create Invoice**.
+  </Step>
+  <Step title="Pick a customer and add line items">
+    Search for a customer by name, email, or CUS-ID, then add one or more line items with a description and price.
+  </Step>
+  <Step title="Choose a tax setting">
+    Select **Inclusive** (tax is included in the price you entered) or **Exclusive** (tax is added on top of the price). The invoice totals recalculate live as you change this setting, so you can verify the breakdown before saving.
+  </Step>
+  <Step title="Save or confirm">
+    Click **Save as Draft** to keep editing, or move the invoice to **Confirmed** when it is ready to send. See the status rules below before confirming.
+  </Step>
+</Steps>
+
+<Warning>
+  Once an invoice is moved to **Confirmed**, it cannot be reverted to **Draft**. This protects financial records and the underlying PDF. Double-check all line items, tax settings, and customer details before confirming.
+</Warning>
+
+## Invoice statuses
+
+| Status | Behaviour |
+|--------|-----------|
+| **Draft** | Editable; not yet locked. Line items, tax, and customer can be changed. |
+| **Confirmed** | Locked — cannot revert to Draft. The PDF is generated from this state. |
+
+## Tax options
+
+Two tax modes are available:
+
+- **Inclusive** — the unit price you enter already includes tax. The invoice breaks out the tax portion for display.
+- **Exclusive** — tax is calculated on top of the unit price and added to the total.
+
+Invoice totals recalculate live as you switch between modes, so you can confirm the numbers before saving.
+
+## PDF export
+
+Use **Download PDF** to export the invoice. The PDF pulls your business details from **Settings → General**, including:
+
+- Company Name and Legal Name
+- GST / PAN number
+- Business address
+- Store logo
+
+<Note>
+  The PDF uses your **Company Name** and **Legal Name** from **Settings → General**. Make sure these are filled in before sending an invoice to a customer — a blank company name will appear on the PDF.
+</Note>
+
+## Sending
+
+Use **Send** on the invoice detail page to email the invoice directly to the customer. TokenSupply uses your configured SMTP as the preferred sending method, with Resend as an automatic fallback if SMTP is not configured or encounters an error.

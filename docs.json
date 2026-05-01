@@ -1,0 +1,79 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "almond",
+  "name": "TokenSupply",
+  "logo": {
+    "light": "https://media.brand.dev/4e1f9589-b1f7-49da-bfd7-71a7050c618b.svg",
+    "dark": "https://media.brand.dev/4e1f9589-b1f7-49da-bfd7-71a7050c618b.svg"
+  },
+  "favicon": "https://media.brand.dev/fb9ca0c6-e572-43f1-8205-108c2d7377e2.jpg",
+  "colors": {
+    "primary": "#e55b6b",
+    "light": "#6767e3",
+    "dark": "#0c0c0c"
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Start free",
+      "href": "https://tokensupply.in/auth"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "getting-started/introduction",
+              "getting-started/quickstart",
+              "getting-started/dashboard-tour"
+            ]
+          },
+          {
+            "group": "Products & Inventory",
+            "pages": [
+              "products/adding-products",
+              "products/inventory-keys"
+            ]
+          },
+          {
+            "group": "Vendors & Procurement",
+            "pages": [
+              "vendors/managing-vendors",
+              "vendors/purchase-orders",
+              "vendors/vendor-offers"
+            ]
+          },
+          {
+            "group": "Sales & Fulfilment",
+            "pages": [
+              "sales/integrations-overview",
+              "sales/shopify-integration",
+              "sales/g2a-integration",
+              "sales/manual-orders",
+              "sales/customer-portal",
+              "sales/customers",
+              "sales/invoices"
+            ]
+          },
+          {
+            "group": "Settings & Team",
+            "pages": [
+              "settings/overview",
+              "settings/branding",
+              "settings/email-smtp",
+              "settings/custom-domains",
+              "settings/templates",
+              "settings/team-management",
+              "settings/account-security",
+              "settings/billing-credits"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

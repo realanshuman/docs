@@ -1,0 +1,96 @@
+{
+  "projectType": "saas",
+  "projectName": "TokenSupply",
+  "projectDescription": "TokenSupply is an all-in-one operating system for digital goods sellers — covering product cataloging, inventory key management, vendor procurement, multi-channel sales, order fulfilment, invoicing, and support tickets in a single workspace.",
+  "theme": "almond",
+  "primaryColor": "#e55b6b",
+  "lightColor": "#6767e3",
+  "darkColor": "#0c0c0c",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "getting-started/introduction",
+              "getting-started/quickstart",
+              "getting-started/dashboard-tour"
+            ]
+          },
+          {
+            "group": "Products & Inventory",
+            "pages": [
+              "products/adding-products",
+              "products/inventory-keys"
+            ]
+          },
+          {
+            "group": "Vendors & Procurement",
+            "pages": [
+              "vendors/managing-vendors",
+              "vendors/purchase-orders",
+              "vendors/vendor-offers"
+            ]
+          },
+          {
+            "group": "Sales & Fulfilment",
+            "pages": [
+              "sales/integrations-overview",
+              "sales/shopify-integration",
+              "sales/g2a-integration",
+              "sales/manual-orders",
+              "sales/customer-portal",
+              "sales/customers",
+              "sales/invoices"
+            ]
+          },
+          {
+            "group": "Settings & Team",
+            "pages": [
+              "settings/overview",
+              "settings/branding",
+              "settings/email-smtp",
+              "settings/custom-domains",
+              "settings/templates",
+              "settings/team-management",
+              "settings/account-security",
+              "settings/billing-credits"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Encrypted digital key vault with masked reveals and full audit log",
+    "Multi-channel selling across Shopify, G2A, and other marketplaces",
+    "Vendor management with purchase orders, pricing offers, and stock collection",
+    "Automated order fulfilment with branded customer delivery portal",
+    "Invoicing with inclusive/exclusive tax and PDF generation",
+    "Ticketing system with SLA tracking, replacements, and AI-assisted summaries",
+    "Role-based access for Super Admin, Admin, Support, and Vendor roles",
+    "Analytics dashboard with revenue, product, vendor, and customer insights",
+    "Internal team chat with entity-linked threads",
+    "Custom domains, branding, SMTP email, and Order ID formats"
+  ],
+  "publicApiSurface": [
+    "Dashboard KPI metrics (revenue, orders, active inventory, open tickets, credits)",
+    "Products catalog with SKU, functional category, and product type",
+    "Inventory key statuses: Available, Reserved, Sold, Invalid",
+    "Purchase Order lifecycle: Draft → Confirmed → Payment Pending → Paid → Closed",
+    "Shopify integration: shop domain + Admin API token, auto-deliver mapping",
+    "G2A integration: Client ID, Client Secret, API URL, Token URL, auto sync",
+    "Vendor Offers: price + delivery time per vendor-product pair",
+    "Transaction statuses: Pending, Completed, Failed, Refunded",
+    "Customer delivery portal: /s/{token_id}/order/{orderToken}",
+    "Invoice statuses: Draft, Confirmed (with PDF export)",
+    "Ticket lifecycle: Open → In Progress → Awaiting → Resolved → Closed",
+    "Team roles: Super Admin, Admin, Support, Vendor",
+    "Notification types: PO updates, ticket events, team joins, expiring inventory, low stock, low credits",
+    "Template merge fields: {{delivery_link}}, {{customer_name}}, {{order_id}}, {{key}}",
+    "Credit model: 1 key delivered = 1 credit consumed",
+    "Settings tabs: General, Email Setup, Domain, Notifications, Store Page"
+  ]
+}

@@ -1,0 +1,103 @@
+---
+title: "Add, invite, and manage your vendors in TokenSupply"
+description: "Create vendor profiles with banking details, invite suppliers to the portal, manage agreements, and track performance across all purchase orders."
+sidebarTitle: "Managing Vendors"
+---
+
+Vendors are your suppliers — the businesses and individuals who provide the digital keys, gift cards, licenses, and subscriptions you sell. TokenSupply lets you store all vendor details in one place, invite them to a dedicated portal, and track every purchase order and procurement activity without switching between tools.
+
+## Adding a vendor
+
+Navigate to **Purchases → Vendors** and click **Add Vendor** in the top-right corner. The form is organised into five groups:
+
+<Steps>
+  <Step title="Basic details">
+    Enter the vendor's **Name**, **Vendor Type** (Individual or Business), **Country**, **Default Currency**, and **Status** (Active or Inactive).
+  </Step>
+  <Step title="Contact information">
+    Add a primary **Email**, **Phone**, and **Address**. You can also record chat handles — **Telegram**, **WhatsApp**, and **Instagram** — for vendors you communicate with outside email.
+  </Step>
+  <Step title="Catalogue">
+    Select what the vendor supplies. Options include: **Gift Cards**, **Gaming/Software Keys**, **Subscriptions**, **Licenses**, **In-game Currency**, **DLCs**, and **Other**. You can select multiple categories.
+  </Step>
+  <Step title="Commercial terms">
+    Set the vendor's default **Payment Terms**. Available options: Net 7, Net 15, Net 30, Net 45, Net 60, Net 90, Due on Receipt, COD, and Advance. This value pre-fills every new purchase order for this vendor.
+  </Step>
+  <Step title="Banking details">
+    Banking fields adapt based on the vendor's country:
+    - **India** — Account Number, IFSC Code, UPI ID
+    - **United States** — Account Number, Routing Number
+    - **United Kingdom** — Account Number, Sort Code
+    - **Australia** — Account Number, BSB Code
+    - **European Union and others** — IBAN, SWIFT/BIC
+
+    These details are printed directly on the PO PDF so you always have payment information at hand.
+  </Step>
+</Steps>
+
+<Note>
+  Every vendor is assigned a sequential vendor code — `SLR-001`, `SLR-002`, and so on. This code is used as the prefix in all purchase order numbers for that vendor (for example, `PO-SLR-001-0042`), so POs are always traceable back to their supplier.
+</Note>
+
+## Vendor types and tax treatment
+
+TokenSupply distinguishes between two vendor types, and this distinction affects how tax is calculated on every PO.
+
+| Type | Tax behaviour | Badge colour |
+|------|---------------|--------------|
+| **Individual** | Always 0% tax. PO PDFs print a Tax Declaration notice confirming the vendor is unregistered. | Blue |
+| **Business** | Tax rate is derived automatically from your store country vs the vendor's country (e.g. GST 18% for India-to-India, 0% intra-EU reverse charge). | Orange |
+
+The badge appears on every vendor card in the list and on the header of each purchase order, so you can identify the type at a glance without opening the full record.
+
+## Vendor detail page
+
+Click any vendor to open their detail page. It uses the standard TokenSupply layout: an icon-only breadcrumb, a profile header, and a quick-stats strip showing **Total POs**, **Total Spend**, and **Open Tickets**.
+
+Below the header you'll find seven tabs:
+
+<CardGroup cols={3}>
+  <Card title="Overview" icon="layout-dashboard">
+    Core vendor details — contact info, banking, payment terms, and catalogue.
+  </Card>
+  <Card title="Purchase Orders" icon="clipboard-list">
+    All POs linked to this vendor, with status and totals.
+  </Card>
+  <Card title="Products" icon="package">
+    Products associated with this vendor through vendor offers.
+  </Card>
+  <Card title="Offers" icon="tag">
+    Per-product pricing and delivery time mappings.
+  </Card>
+  <Card title="Agreements" icon="file-text">
+    Signed contracts and legal documents.
+  </Card>
+  <Card title="Tickets" icon="ticket">
+    Open and resolved support tickets linked to this vendor.
+  </Card>
+  <Card title="Activity" icon="activity">
+    Full audit log of all actions on this vendor record.
+  </Card>
+</CardGroup>
+
+## Inviting vendors to the portal
+
+Once a vendor is set up, you can give them direct access to their own data. From the vendor detail page, click **Invite to Portal**.
+
+TokenSupply emails the vendor a magic link — sent via your configured SMTP, with Resend as an automatic fallback. Once the vendor accepts the invitation, they get a constrained portal experience with a flat sidebar scoped to only their own data: their POs, products, offers, tickets, messages, and analytics. They cannot see any other vendor's information.
+
+<Info>
+  The vendor portal is intended for suppliers who actively submit stock files, upload invoices, or update their own pricing offers. For occasional vendors, you may not need to issue an invite at all.
+</Info>
+
+## Managing agreements
+
+The **Agreements** tab on the vendor detail page lets you upload signed contracts and legal documents (PDF or DOCX). Files are stored securely and are never accessible via permanent public URLs — each time you open a document, TokenSupply generates a short-lived access link that expires automatically.
+
+## Editing and deleting vendors
+
+To update a vendor's details, click **Edit** in the page header. All fields from the creation form are available to change, including banking details and payment terms.
+
+<Warning>
+  Deleting a vendor is permanent and irreversible. You must type **DELETE** in the confirmation dialog to proceed. Any purchase orders, offers, and transactions linked to the vendor are **unlinked** (not deleted), but the association is lost. Consider setting the vendor's status to **Inactive** instead of deleting if you may need to reference their history.
+</Warning>
