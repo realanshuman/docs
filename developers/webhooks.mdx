@@ -120,10 +120,6 @@ export function verifySuresign(rawBody, header, secret, toleranceSeconds = 300) 
   Verify against the **raw** request body, exactly as received. Parsing the JSON and turning it back into a string can change it and break the signature.
 </Warning>
 
-<Info>
-  Older integrations may read `X-DropTheDoc-Event` and `X-DropTheDoc-Signature`. Suresign still sends these with the same values, but use the `X-Suresign-*` headers in new code.
-</Info>
-
 ## Delivery and failures
 
 - **Timeout:** your endpoint has 8 seconds to answer. Reply with any `2xx` status quickly and do slow work afterwards.

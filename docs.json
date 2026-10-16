@@ -3,9 +3,9 @@
   "theme": "almond",
   "name": "Suresign",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#0E2AF5",
+    "light": "#5B8FFF",
+    "dark": "#0E2AF5"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -138,7 +138,8 @@
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/dark.svg",
+    "href": "https://suresign.si"
   },
   "navbar": {
     "links": [
