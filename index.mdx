@@ -59,7 +59,7 @@ That is one of three ways to work with Suresign.
     Watch as people open and sign. Send reminders, extend the expiry date, or resend a document that expired. You can also ask the agent to check who still needs to sign.
   </Step>
   <Step title="Everyone gets a sealed copy">
-    When the last person signs, the PDF is flattened and sealed. A certificate of completion, SHA-256 fingerprints, and a hash-chained audit trail are attached. Everyone on the document gets a signed copy by email. An entry is also added to the nightly public record.
+    When the last person signs, the PDF is flattened and sealed. A certificate of completion, SHA-256 fingerprints, and a hash-chained audit trail are attached. Everyone on the document gets a signed copy by email.
   </Step>
 </Steps>
 
@@ -68,8 +68,6 @@ That is one of three ways to work with Suresign.
 An **audit trail** is a detailed history of everything that happened to a document. Who sent it, who opened it, who signed it, when, and from where. In Suresign, each entry in this history is linked to the one before it using a mathematical lock called a hash. If anyone tries to change a single entry, every lock after it breaks. That is what "hash-chained" means.
 
 A **certificate of completion** is a page that comes with every signed document. It lists the document title, every signer, the time each person signed, the fingerprint of the file, and the full history.
-
-The **public record** is an open log published every night at [suresign.si/ledger](https://suresign.si/ledger). It holds only fingerprints and reference codes, no names or content, so anyone can check that a document was sealed and nothing was rewritten.
 
 Together these prove that the file you hold is exactly the file that was signed, and that no one tampered with the history.
 

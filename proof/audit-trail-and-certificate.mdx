@@ -1,10 +1,10 @@
 ---
 title: "Audit trail and certificate: proof no one can change"
-description: "Every Suresign document gets a hash-chained audit trail, a flattened sealed PDF, a certificate of completion, and a nightly public record anyone can verify."
+description: "Every Suresign document gets a hash-chained audit trail, a flattened sealed PDF, and a certificate of completion that prove who signed, when, and that nothing changed."
 sidebarTitle: "Audit Trail"
 ---
 
-Every document you send through Suresign produces a detailed, unchangeable record of its entire journey. This record is called an **audit trail**. It is combined with a **certificate of completion** and a nightly **public record** to create evidence anyone can check. Together they prove who signed, when, and that nothing was altered after the fact.
+Every document you send through Suresign produces a detailed, unchangeable record of its entire journey. This record is called an **audit trail**. It is combined with a **certificate of completion** to create evidence anyone can check. Together they prove who signed, when, and that nothing was altered after the fact.
 
 Think of the audit trail like a bound ledger. Once something is written in it, you cannot rip a page out or rewrite a line without every page after it looking wrong.
 
@@ -21,7 +21,6 @@ For every document, Suresign records every event in a table that cannot be edite
 | Signer checks | Whether an access code or emailed code was required, and when each was passed. |
 | Signatures | A fingerprint of each signature image, the name and initials it was adopted under, whether it was drawn, typed, or uploaded, and the Signature ID printed with it. |
 | Chain | A mathematical lock called a hash, computed for every entry together with the hash of the entry before it. |
-| Public record | When completed, the file's fingerprint, reference code, and completion time are added to a public log. No names or content go into it. |
 
 ## How the hash chain works, in plain words
 
@@ -46,26 +45,27 @@ When the last person signs, Suresign creates a certificate that includes:
 - Any file attachments uploaded by signers
 - A count of total fields and completed fields
 
-Anyone holding the signed file can check it at [suresign.si/verify](https://suresign.si/verify). The result shows whether the file is unchanged and displays its entry in the public record.
+Anyone holding the signed file can check it at [suresign.si/verify](https://suresign.si/verify). The result shows whether the file is unchanged.
 
 ## The sealed, flattened PDF
 
 The completed PDF is **flattened**, which means filled form fields become part of the page image and cannot be edited back into blank fields. Each page is also stamped with the document identifier and the address [suresign.si/verify](https://suresign.si/verify). This creates a single file that matches the fingerprint on the certificate.
 
-## The nightly public record
-
-Every completed document is added to a public, append-only record at [suresign.si/ledger](https://suresign.si/ledger). Each night, a **checkpoint** of the entire record is published and signed. Because later checkpoints must extend earlier ones, this proves no entry was changed or removed.
-
-The public record holds only three things: a fingerprint, a reference code, and a time. No names, email addresses, or document content ever enter it.
-
 ## What this proves
 
-Together, the audit trail, certificate, and public record prove four things:
+Together, the audit trail and certificate prove three things:
 
 1. The file you hold is exactly the file that was sealed when signing finished.
 2. You can see who was asked to sign, and when each person did.
 3. The history behind it is unbroken and unedited.
-4. It is in the public record, published every night, so Suresign cannot quietly rewrite history.
+
+## The public log, in one minute
+
+You never need to use this. It is a safeguard that works in the background.
+
+**What it is:** a public list at [suresign.si/ledger](https://suresign.si/ledger) that holds a fingerprint of every finished document. No names, emails, or document content are in it.
+
+**Why we built it:** so that not even Suresign can quietly change or delete a signed record later. Because the list is public and only ever grows, any change would be visible to everyone.
 
 ## Next steps
 

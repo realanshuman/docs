@@ -22,9 +22,9 @@
           "href": "https://suresign.si/verify"
         },
         {
-          "anchor": "Public Record",
-          "icon": "scroll",
-          "href": "https://suresign.si/ledger"
+          "anchor": "The Agent",
+          "icon": "sparkles",
+          "href": "https://suresign.si/ai"
         },
         {
           "anchor": "Contact Support",
@@ -222,5 +222,10 @@
   },
   "styling": {
     "eyebrows": "breadcrumbs"
+  },
+  "seo": {
+    "metatags": {
+      "canonical": "https://docs.suresign.si"
+    }
   }
 }
