@@ -1,0 +1,106 @@
+---
+title: "Suresign REST API: read documents and download signed PDFs"
+sidebarTitle: "REST API"
+description: "The Suresign REST API lists workspace documents, shows who still has to sign, and downloads signed PDFs and certificates. Base URL, pagination and limits."
+---
+
+The Suresign REST API lets your own software read the documents in your workspace and download their PDFs. Use it to copy completed agreements into your file storage, attach them to a customer record, or build a report of what is signed and what is still waiting. The API is read-only: sending, signing and the agent all happen in the Suresign app.
+
+<Note>
+  The API is available on the **Pro** and **Business** plans and uses [workspace API keys](/developers/authentication).
+</Note>
+
+## Base URL
+
+```text
+https://suresign.si/api/v1
+```
+
+Every request needs an `Authorization: Bearer dtd_...` header. See [Authentication](/developers/authentication).
+
+## Endpoints
+
+| Method and path | What it does |
+| --- | --- |
+| `GET /api/v1/me` | Shows which workspace and key you are using, with a count of documents by status |
+| `GET /api/v1/documents` | Lists documents, newest first, with an optional `status` filter |
+| `GET /api/v1/documents/{id}` | Gets one document, its recipients, and what each person is asked to do |
+| `GET /api/v1/documents/{id}/download` | Downloads the signed PDF, the original upload, or the certificate |
+
+Full request and response details are in the **API Reference** section of the sidebar.
+
+## Pagination
+
+`GET /api/v1/documents` uses cursor pagination. Ask for up to 100 documents at a time with `limit` (default 25). If there are more, the response includes a `nextCursor`. Pass it as `cursor` to get the next page. When `nextCursor` is `null`, you have everything.
+
+```bash List completed documents
+curl "https://suresign.si/api/v1/documents?status=COMPLETED&limit=50" \
+  -H "Authorization: Bearer $SURESIGN_API_KEY"
+```
+
+```json Response (shortened)
+{
+  "data": [
+    {
+      "id": "doc_123",
+      "title": "Northwind Studio NDA",
+      "status": "COMPLETED",
+      "signingOrder": "PARALLEL",
+      "progress": { "done": 1, "total": 1 },
+      "recipients": [
+        { "name": "Dana Lee", "email": "dana@example.com", "role": "SIGNER", "status": "SIGNED" }
+      ],
+      "links": {
+        "self": "/api/v1/documents/doc_123",
+        "download": "/api/v1/documents/doc_123/download"
+      }
+    }
+  ],
+  "nextCursor": null
+}
+```
+
+## Downloads
+
+`GET /api/v1/documents/{id}/download` returns a PDF. Choose the file with `type`:
+
+| `type` | File |
+| --- | --- |
+| `signed` | The sealed, signed PDF. This is the default once the document is complete |
+| `original` | The file as it was uploaded. This is the default before completion |
+| `certificate` | The certificate of completion |
+
+Asking for `signed` or `certificate` before everyone has finished returns `404` with a message saying the document is not complete. Every API download is recorded in the document's [audit trail](/proof/audit-trail-and-certificate) under the name of your API key.
+
+## Limits and errors
+
+- **Rate limit:** 300 requests per minute per key. Going over returns `429`.
+- **Deleted documents** never appear in the API.
+- **A document from another workspace** returns `404`, the same as one that does not exist.
+- **Errors** are JSON with an `error` message. See the error table in [Authentication](/developers/authentication#errors).
+
+## A common pattern
+
+<Steps>
+  <Step title="Wait for a webhook">
+    Your [webhook](/developers/webhooks) endpoint receives `document.completed`.
+  </Step>
+  <Step title="Download the signed PDF">
+    Call `GET /api/v1/documents/{id}/download` with the document ID from the event.
+  </Step>
+  <Step title="Store it">
+    Save the PDF, and the certificate if you want it, in your own system.
+  </Step>
+</Steps>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/developers/authentication">
+    Create your API key.
+  </Card>
+
+  <Card title="Webhooks" icon="webhook" href="/developers/webhooks">
+    Get told when documents change.
+  </Card>
+</CardGroup>

@@ -1,0 +1,145 @@
+---
+title: "Receive and verify Suresign webhooks for signing events"
+sidebarTitle: "Webhooks"
+description: "Suresign webhooks POST signed JSON to your server when documents are sent, opened, signed, declined or completed. Learn the events, payload and verification."
+---
+
+Suresign webhooks send a POST request to your server whenever something happens to a document, such as a person signing it. Instead of asking the API over and over whether anything changed, your app is told the moment it does. This page covers setup, the five events, the payload, and how to check that each delivery really came from Suresign.
+
+<Note>
+  Webhooks are available on the **Pro** and **Business** plans. Every member can see the endpoints; only **admins** can add, pause, test or remove them.
+</Note>
+
+## Set up an endpoint
+
+<Steps>
+  <Step title="Build a receiving URL">
+    Create a URL on your server that accepts POST requests, for example `https://example.com/webhooks/suresign`. It must use `https`. While building, `http://localhost` and `http://127.0.0.1` are allowed too.
+  </Step>
+  <Step title="Add the endpoint">
+    Go to **Settings > Developers**, find **Webhooks** and select **Add endpoint**. Enter the URL and tick the events you want under **Send me**.
+  </Step>
+  <Step title="Copy the signing secret">
+    Suresign shows the endpoint's signing secret once. It starts with `whsec_`. Copy it into your app's secret store, then select **I have copied it**.
+  </Step>
+  <Step title="Send a test">
+    Select **Test** next to the endpoint. Suresign sends a real, signed `document.completed` delivery with `"test": true` and a fake document, and tells you what your server answered.
+  </Step>
+</Steps>
+
+## Events
+
+| Event | When it is sent |
+| --- | --- |
+| `document.sent` | Someone sent a document out for signature |
+| `document.viewed` | A recipient opened the document for the first time |
+| `recipient.completed` | One person signed, approved or filled in their part |
+| `recipient.declined` | Someone refused, and the document stopped |
+| `document.completed` | Everyone finished and the final PDF was sealed |
+
+## What a delivery looks like
+
+Each delivery is a JSON POST with these headers:
+
+| Header | Value |
+| --- | --- |
+| `Content-Type` | `application/json` |
+| `User-Agent` | `Suresign-Webhooks/1` |
+| `X-Suresign-Event` | The event name, for example `document.completed` |
+| `X-Suresign-Signature` | `t=<unix seconds>,v1=<hex HMAC>` |
+
+The body holds the event, the time and the document. The `document` object is the same shape the [REST API](/api-reference/introduction) returns.
+
+```json document.completed
+{
+  "event": "document.completed",
+  "createdAt": "2026-10-16T09:30:00.000Z",
+  "data": {
+    "document": {
+      "id": "doc_123",
+      "title": "Northwind Studio NDA",
+      "status": "COMPLETED",
+      "progress": { "done": 1, "total": 1 },
+      "recipients": [
+        { "id": "rec_1", "name": "Dana Lee", "email": "dana@example.com", "role": "SIGNER", "status": "SIGNED" }
+      ],
+      "links": {
+        "self": "/api/v1/documents/doc_123",
+        "download": "/api/v1/documents/doc_123/download"
+      }
+    }
+  }
+}
+```
+
+Some events add details next to `document`:
+
+| Event | Extra fields in `data` |
+| --- | --- |
+| `document.viewed` | `recipient`: `id`, `name`, `email` |
+| `recipient.completed` | `recipient`: `id`, `name`, `email`, `role`, plus `action`: `sign`, `approve` or `fill` |
+| `recipient.declined` | `recipient`: `id`, `name`, `email`, plus `reason` (or `null`) |
+
+## Verify every delivery
+
+The `X-Suresign-Signature` header is an HMAC-SHA256 of `<timestamp>.<raw body>`, keyed with your endpoint's secret, in hex. Checking it protects you from forged requests (nobody without your secret can sign) and replayed ones (the timestamp is signed, so reject anything older than five minutes).
+
+<Steps>
+  <Step title="Split the header">
+    Read `t` (the timestamp) and `v1` (the signature) from `t=...,v1=...`.
+  </Step>
+  <Step title="Check the age">
+    Reject the delivery if `t` is more than 300 seconds from your server's current time.
+  </Step>
+  <Step title="Recompute and compare">
+    Compute HMAC-SHA256 of `t + "." + rawBody` with your secret and compare it to `v1` in constant time.
+  </Step>
+</Steps>
+
+```js verify-webhook.js lines
+import { createHmac, timingSafeEqual } from "node:crypto";
+
+export function verifySuresign(rawBody, header, secret, toleranceSeconds = 300) {
+  const parts = Object.fromEntries(
+    header.split(",").map((piece) => piece.trim().split("="))
+  );
+  const timestamp = Number(parts.t);
+  if (!Number.isFinite(timestamp)) return false;
+  if (Math.abs(Date.now() / 1000 - timestamp) > toleranceSeconds) return false;
+
+  const expected = createHmac("sha256", secret)
+    .update(`${timestamp}.${rawBody}`)
+    .digest("hex");
+  const a = Buffer.from(expected);
+  const b = Buffer.from(parts.v1 ?? "");
+  return a.length === b.length && timingSafeEqual(a, b);
+}
+```
+
+<Warning>
+  Verify against the **raw** request body, exactly as received. Parsing the JSON and turning it back into a string can change it and break the signature.
+</Warning>
+
+<Info>
+  Older integrations may read `X-DropTheDoc-Event` and `X-DropTheDoc-Signature`. Suresign still sends these with the same values, but use the `X-Suresign-*` headers in new code.
+</Info>
+
+## Delivery and failures
+
+- **Timeout:** your endpoint has 8 seconds to answer. Reply with any `2xx` status quickly and do slow work afterwards.
+- **No automatic retries:** each event is sent once. If a delivery fails, use the [REST API](/api-reference/introduction) to catch up, for example by listing recent documents.
+- **Health at a glance:** the endpoint list shows the last attempt, the last status or error, and how many deliveries in a row have failed.
+- **Pause or remove:** pause an endpoint to stop deliveries for a while, or remove it entirely.
+- **Plan changes:** if a workspace moves to a plan without webhooks, endpoints are kept but nothing is sent until the plan includes webhooks again.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="REST API" icon="code" href="/api-reference/introduction">
+    Download the signed PDF after an event.
+  </Card>
+
+  <Card title="Audit Trail" icon="list-check" href="/proof/audit-trail-and-certificate">
+    What Suresign records for every step.
+  </Card>
+</CardGroup>

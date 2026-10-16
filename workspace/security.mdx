@@ -1,0 +1,86 @@
+---
+title: "Security: how Suresign protects your documents and account"
+description: "Suresign uses AES-256-GCM encryption, TLS, two-step sign-in, new-device alerts, virus scanning, and signing link controls. Learn what we do, what you should do, and how to report issues."
+sidebarTitle: "Security"
+---
+
+Suresign protects your documents, account, and evidence with several layers of security. This page explains what we do in plain words, what you need to do yourself, and how to report a problem.
+
+## Encryption: locking your files
+
+**At rest.** Every stored document is encrypted with AES-256-GCM. Think of this as a lock that scrambles your file so no one can read it without the key. The GCM part means the lock also detects tampering: if someone tries to modify the scrambled file, it will not open properly. When a file is uploaded, it waits briefly in a private holding area while our server checks it, encrypts it, and then deletes the holding copy.
+
+**In transit.** All traffic between your browser and Suresign uses TLS, the same secure connection banks use. HTTP is redirected to HTTPS, and a setting called HSTS makes sure your browser always uses the secure version.
+
+**Keys.** The encryption key is held only in process memory while the server is running. It is never written to the database or stored next to the files it protects. If the key were lost, stored documents would be unrecoverable. That is by design.
+
+**Database.** The database that stores your account and document records is encrypted at rest by our managed provider and reachable only over TLS.
+
+## Virus scanning
+
+Every file you upload is checked for viruses before it is stored. If a file fails the scan, it is rejected and you are told why.
+
+## Sign-in protections
+
+| Control | What it does in plain words |
+| --- | --- |
+| Password hashing | Your password is scrambled beyond recognition using a strong method called bcrypt. It is never stored, logged, or emailed in plain text. |
+| Magic links | Single-use, time-limited links emailed to you for passwordless sign-in. |
+| Session tokens | When you sign in, you get a secret token. The server only stores a fingerprint of it, so even a database breach would not give away usable sessions. |
+| Session cookies | Cookies are marked HttpOnly, SameSite=Lax, and Secure. In plain words: page scripts cannot read them, and they are only sent over secure connections. |
+| Session control | In **Settings** > **Security**, you can revoke any session or sign out everywhere at once. Changing your password signs out every other device. |
+| Account lockout | Five failed sign-ins lock the account. At first for one minute, then five, fifteen, thirty, and up to an hour. The count resets after a successful sign-in or a day with no failures. |
+| New-device alerts | You get an email when your account signs in from a browser or network we have not seen before. You can review all known devices in **Settings** > **Security**. |
+
+## Two-step sign-in
+
+Two-step sign-in adds a second check after your password. You turn it on in **Settings** > **Security** and use an authenticator app on your phone that supports TOTP. The app gives you a new code every 30 seconds. You also get one-time recovery codes. Save these somewhere safe. They are the only way back into your account if you lose your phone.
+
+## Signing link safety
+
+Each signing link is built for one document, one recipient, and one turn.
+
+- Links expire and revoke immediately when a recipient finishes signing, or when a document is cancelled, expires, or is deleted.
+- **Access codes** are encrypted the same way as documents. Five wrong attempts lock the link for 15 minutes.
+- **Emailed 6-digit confirmation codes** are stored as hashes and valid for 10 minutes. Once passed, the check is remembered for 12 hours in that browser.
+- Nothing on the document is shown until all checks pass.
+
+## Your responsibilities checklist
+
+Security is shared. Here is what only you can do:
+
+- [ ] Use a strong, unique password and protect the email account that receives your signing links.
+- [ ] Remove workspace members promptly when they leave.
+- [ ] Give people the lowest role that lets them do their job.
+- [ ] Check recipient email addresses before sending. We deliver to the address you type, including the wrong one.
+- [ ] Set expiry dates on sensitive documents so links do not stay live forever.
+- [ ] Download and store completed documents and certificates in your own records.
+- [ ] Decide what belongs in a document. We encrypt whatever you upload, but we cannot decide for you whether it should have been uploaded.
+
+## Certifications: an honest note
+
+Suresign is not currently SOC 2 Type II or ISO 27001 certified. The controls on this page are real and you can check them against the product, but they have not been audited by a third party. If your procurement process requires an audited report, email [security@suresign.si](mailto:security@suresign.si) and we will be straight with you about where we are.
+
+Our infrastructure providers hold their own certifications, and those are listed with each provider at [subprocessors](https://suresign.si/legal/subprocessors).
+
+## Report a vulnerability
+
+If you find a security issue, tell us at [security@suresign.si](mailto:security@suresign.si) before disclosing it publicly. Include what you found, how to reproduce it, and what you think the impact is. We acknowledge within 3 business days, keep you updated while we fix it, and credit you if you would like. We do not currently pay bounties.
+
+Safe harbour applies to good-faith research within your own test accounts, without privacy violations, service degradation, or data destruction. Do not access or modify anyone else's documents.
+
+## Next steps
+
+<CardGroup cols={3}>
+  <Card title="Set up two-step sign-in" icon="lock" href="/getting-started/account-setup">
+    Enable two-step sign-in and save your recovery codes.
+  </Card>
+
+  <Card title="Team and roles" icon="users" href="/workspace/team-and-roles">
+    Learn who can do what and how to remove former members.
+  </Card>
+
+  <Card title="Plans and billing" icon="credit-card" href="/workspace/plans-and-billing">
+    Compare security features across Free, Pro, and Business plans.
+  </Card>
+</CardGroup>

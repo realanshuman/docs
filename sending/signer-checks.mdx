@@ -1,0 +1,93 @@
+---
+title: "Signer checks: access code and email code in Suresign"
+sidebarTitle: "Signer Checks"
+description: "Protect documents with an access code you set or a six-digit email code sent automatically. Lock links after five wrong tries. Email codes last 10 minutes."
+---
+
+Signer checks make sure only the right person can open and sign your document. Suresign offers two layers of protection: an access code you set, and a six-digit email code sent automatically. This page explains both.
+
+## Why use signer checks
+
+When you send a signing link, anyone with the email could forward it. Signer checks add proof that the person opening the link is the person you intended.
+
+- An **access code** is a password you create and share separately.
+- An **email code** is a one-time code sent to the signer's inbox by Suresign. The signer must enter it before they can view the document.
+
+You can use one, both, or neither. Both together is the most secure option.
+
+## Access code
+
+An access code is a custom password you set per recipient while preparing the document. You tell the signer the code outside of Suresign, such as by text message or in person.
+
+| What it does | What to know |
+| --- | --- |
+| Blocks the link until the correct code is entered | The signer must type the code before seeing the document |
+| Locks after 5 wrong attempts | If someone guesses wrong 5 times, the link locks for 15 minutes |
+| You choose the code | Pick something memorable but not obvious. Do not use birthdays or "1234" |
+| Case-insensitive | "ACME123" and "acme123" both work |
+
+<Note>
+  There is no automatic reset for a locked link. If a signer gets locked out, you can reopen the document or extend the expiry and send again.
+</Note>
+
+## Six-digit email code
+
+Suresign can send a six-digit code to the signer's email address. The signer opens their inbox, finds the code, and enters it on the signing page.
+
+| What it does | What to know |
+| --- | --- |
+| Sent to the email address you entered | Make sure the email is correct before you send |
+| Valid for 10 minutes | The signer must use it within 10 minutes or request a new one |
+| 5 tries per code | Too many wrong guesses retires the code |
+| Remembered for 12 hours | After entering it once, the signer does not need to re-enter on the same device for 12 hours |
+| Resend after 30 seconds | You can request a fresh code 30 seconds after the last one |
+| 5 codes per hour max | If that limit is reached, the signer must wait or check their inbox for one already sent |
+
+This is useful when you cannot share a code separately. The email itself becomes the proof. If the signer is already signed in to a Suresign account at their own verified email address, they skip the email code automatically. They never skip the access code, which is your own second factor.
+
+## How to add signer checks
+
+<Steps>
+  <Step title="Choose checks before sending">
+    While setting up recipients, look for the signer checks section.
+  </Step>
+  <Step title="Enable access code (optional)">
+    Turn on access code and type a password. Share this with the signer separately.
+  </Step>
+  <Step title="Enable email code (optional)">
+    Turn on email code. Suresign will send a six-digit code automatically when the signer opens the link.
+  </Step>
+  <Step title="Send the document">
+    Each signer gets their signing link and any relevant instructions.
+  </Step>
+</Steps>
+
+<Warning>
+  Signer checks apply per recipient. You can set different access codes for different signers on the same document. Email codes are always sent to the address you entered for that signer.
+</Warning>
+
+## What the signer sees
+
+When a signer clicks their signing link, they see a screen asking for any required codes. After entering the correct code, they can view the document and sign.
+
+If both checks are enabled, they enter the access code first, then the email code.
+
+## Tips for using checks wisely
+
+- Use an access code when you already have a secure way to share it, such as a phone call or secure chat.
+- Use an email code when you want Suresign to handle verification automatically.
+- For very sensitive documents, such as a financial agreement, use both checks together.
+- Always double-check the signer's email address. A typo sends the code to the wrong inbox.
+- Admins can turn on email codes by default for the whole workspace. Go to **Settings > Sending** to require signer email confirmation on every new document.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Set reminders and expiry" icon="clock" href="/sending/reminders-and-expiry">
+    Add deadlines and automatic nudges so signers do not forget.
+  </Card>
+
+  <Card title="Templates and open links" icon="link" href="/sending/templates-and-open-links">
+    Save this setup as a template or turn it into a public link anyone can use.
+  </Card>
+</CardGroup>

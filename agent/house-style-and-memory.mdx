@@ -1,0 +1,138 @@
+---
+title: "Teach Suresign Agent Your House Style and Memory"
+sidebarTitle: "House Style & Memory"
+description: "Teach the Suresign agent your house style and facts it should remember. Manage memory limits and approval settings in Settings > Agent."
+---
+
+The Suresign agent gets better at helping you when it knows how you work. You teach it two things in **Settings > Agent**: a house style brief that applies to every conversation, and memory facts about people and your workspace. The more it knows, the less you have to repeat yourself.
+
+<Note>
+  Only admins can change house style and memory settings. Everyone in the workspace can view what the agent remembers.
+</Note>
+
+## House style brief
+
+A house style brief is a short note you write once. The agent reads it at the start of every chat. This is where you put your preferences so drafts sound like your business.
+
+### What to put in your brief
+
+- Your company name and how you refer to yourself
+- Standard terms you use, such as payment terms or governing law
+- Tone preferences, such as formal or friendly
+- Clauses you almost always include, such as confidentiality or dispute resolution
+- Sign-off language or signature block format
+
+### Example brief
+
+```text
+We are Northwind Pvt Ltd, 12 Lavelle Road, Bengaluru 560001.
+Sam Rivera (Director) signs for us.
+Use the laws of India and the courts at Bengaluru unless told otherwise.
+Write in plain British English with numbered clauses.
+Our usual NDA term is 2 years.
+```
+
+<Steps>
+  <Step title="Open Settings > Agent">
+    Click your workspace name, then choose **Settings**. Select **Agent** from the workspace settings list.
+  </Step>
+  <Step title="Scroll to House style">
+    Find the **House style** panel.
+  </Step>
+  <Step title="Write your brief">
+    Type your brief in the text area, up to 1,000 characters. Write it the way you would brief a new colleague.
+  </Step>
+  <Step title="Save">
+    Press **Save**. The agent reads your new brief the next time a chat starts. Earlier chats are not affected.
+  </Step>
+</Steps>
+
+## Memory facts
+
+The agent remembers facts about your workspace and about individual people. These are short pieces of information that help it draft and answer questions faster. Facts are matched to your words in plain code, so recalling them costs no credits and adds no wait.
+
+### What the agent remembers
+
+| What is remembered | Free | Pro | Business |
+| --- | --- | --- | --- |
+| Facts about your workspace | 25 | 250 | 2,000 |
+| Facts about each person | 10 | 50 | 100 |
+
+<Note>
+  At most 8 facts reach any one turn, so a full memory never costs more than a nearly empty one.
+</Note>
+
+### Examples of workspace facts
+
+- "We always use two-year terms for NDAs"
+- "Our standard notice period is 30 days"
+- "We require two signatures on contracts over \$10,000"
+
+### Examples of person facts
+
+- "Jordan Lee is a software engineer in Bangalore"
+- "Alex Chen prefers contracts in English and Chinese"
+- "Priya Shah is the CFO and signs all vendor agreements"
+
+<Steps>
+  <Step title="Open Settings > Agent > Memory">
+    In **Settings > Agent**, scroll to the **Memory** panel.
+  </Step>
+  <Step title="Switch memory on">
+    Toggle memory to **On**. When it is off, the agent does not use existing facts or learn anything new.
+  </Step>
+  <Step title="Choose who can add workspace facts">
+    Under **New facts for the whole workspace**, pick one of these options:
+
+    - **Save, and list them here**: Any member can add workspace facts straight away.
+    - **Wait for an admin**: New workspace facts need an admin to approve them first. Personal facts always save straight away.
+  </Step>
+  <Step title="Browse and search facts">
+    Switch between the **Workspace** and **Personal** tabs to see what the agent knows. Use the search box to find a specific fact.
+  </Step>
+</Steps>
+
+### What the agent never keeps
+
+The agent refuses to store certain information to keep your workspace safe:
+
+- Access codes, passwords, or PINs
+- Account numbers, card numbers, ID numbers, or phone numbers
+- API keys or tokens
+- Document text, signatures, or what people filled in
+
+### Editing or removing a fact
+
+You can correct what the agent remembers at any time.
+
+<Steps>
+  <Step title="Find the fact">
+    In **Settings > Agent > Memory**, search or browse to the fact you want to change.
+  </Step>
+  <Step title="Choose an action">
+    - Press the pencil icon to **edit** the fact. Correct the text and save.
+    - Press the trash icon to **forget** the fact. It is removed immediately.
+  </Step>
+</Steps>
+
+To remove many facts at once, press **Forget everything** (workspace facts, admins only) or **Forget all of yours** (your personal facts). Every change is recorded in the workspace history, but the fact itself is never kept there.
+
+<Warning>
+  A forgotten fact cannot be brought back. If the agent learned it from a chat, you would need to tell it again.
+</Warning>
+
+## Next steps
+
+<CardGroup>
+  <Card title="Draft an agreement" icon="pen" href="/agent/draft-an-agreement">
+    See how the agent uses your style and memory when drafting.
+  </Card>
+
+  <Card title="Ask and act" icon="message-circle" href="/agent/ask-and-act">
+    Ask questions that draw on what the agent remembers about your workspace.
+  </Card>
+
+  <Card title="Credits and plans" icon="coins" href="/agent/credits">
+    Compare plans to see which memory limits fit your team.
+  </Card>
+</CardGroup>

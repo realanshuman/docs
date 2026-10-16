@@ -1,0 +1,99 @@
+---
+title: "Authenticate Suresign API requests with workspace API keys"
+sidebarTitle: "Authentication"
+description: "Create a Suresign API key in Settings, send it as a Bearer token, and handle 401, 402 and 429 errors. Keys start with dtd_ and are shown only once."
+---
+
+Every Suresign API request is authenticated with an API key that belongs to one workspace. You send the key in the `Authorization` header as a Bearer token. This page shows how to create a key, how to send it, and what each error means.
+
+<Note>
+  API keys are available on the **Pro** and **Business** plans. Only workspace **admins** can see, create, revoke or delete keys.
+</Note>
+
+## How API keys work
+
+- **One workspace per key.** A key only reaches documents in the workspace it was created in. There is no way to ask for another workspace's documents.
+- **Shown once.** You see the full key only when you create it. Suresign stores just a SHA-256 hash, so nobody (including Suresign) can show it to you again.
+- **Easy to recognise.** Every key starts with `dtd_`. The settings page shows the first few characters so you can tell keys apart.
+- **Last used.** The settings page shows when each key was last used, which helps you spot keys nobody needs any more.
+
+## Create a key
+
+<Steps>
+  <Step title="Open the Developers settings">
+    Sign in as an admin and go to **Settings > Developers**. The **API keys** section is at the top.
+  </Step>
+  <Step title="Create a key">
+    Under **Create a key**, give it a name that says where it is used, for example `crm-sync`.
+  </Step>
+  <Step title="Copy and store it">
+    Copy the key straight into your app's secret store or a password manager. You will not see it again.
+  </Step>
+</Steps>
+
+## Send the key
+
+Put the key in the `Authorization` header of every request:
+
+```bash Check your key
+curl https://suresign.si/api/v1/me \
+  -H "Authorization: Bearer dtd_your_key_here"
+```
+
+A working key returns the workspace and key it belongs to:
+
+```json Response
+{
+  "data": {
+    "workspace": { "id": "ws_123", "name": "Northwind Studio" },
+    "key": { "id": "key_123", "name": "crm-sync" },
+    "documents": { "draft": 2, "sent": 3, "completed": 14 }
+  }
+}
+```
+
+<Tip>
+  Call `GET /api/v1/me` first whenever you set up a new key. It answers the two questions a failed request leaves you with: is the key valid, and is it the right workspace?
+</Tip>
+
+## Errors
+
+Every error is JSON with a plain-language `error` message.
+
+| Status | What it means | What to do |
+| --- | --- | --- |
+| `401` | The header is missing or not in the form `Bearer dtd_...`, or the key is revoked, deleted or unknown | Check the header, or create a new key |
+| `402` | The key is valid but the workspace's plan does not include the API | Upgrade to Pro or Business. The key is kept and works again after you upgrade |
+| `403` | The workspace is suspended, so its keys are refused | Contact [support](https://suresign.si/contact) |
+| `429` | More than 300 requests in one minute with this key | Wait the number of seconds in the message, then retry |
+
+For safety, every `401` looks the same. Suresign does not say whether a key was never valid, revoked or deleted.
+
+## Revoke or delete a key
+
+In **Settings > Developers**, each key has two options:
+
+- **Revoke** stops the key at once but keeps it on the list, marked **Revoked**.
+- **Delete key** stops it and removes it from the list. Its name and prefix are still kept in your workspace's audit history, so a leaked key can be traced later.
+
+## Keep keys safe
+
+<Warning>
+  Treat an API key like a password. Anyone with the key can read and download your workspace's documents.
+</Warning>
+
+- Never put a key in front-end code, a mobile app or a public repository.
+- Use a separate key for each app, so you can revoke one without breaking the others.
+- If a key may have leaked, revoke it and create a new one straight away.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="REST API" icon="code" href="/api-reference/introduction">
+    List documents and download PDFs.
+  </Card>
+
+  <Card title="Webhooks" icon="webhook" href="/developers/webhooks">
+    Get told when documents change.
+  </Card>
+</CardGroup>

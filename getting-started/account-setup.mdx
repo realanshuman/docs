@@ -1,0 +1,70 @@
+---
+title: "Set up your Suresign account in a few minutes"
+description: "Sign up free with no credit card, sign in with Google, GitHub, Microsoft, or a magic link, confirm your email, enable two-step sign-in, and manage your profile, signatures, and notifications."
+sidebarTitle: "Account Setup"
+---
+
+Setting up your Suresign account takes only a few minutes. You can use an email address and password, request a magic link, or sign in with an account you already have through Google, GitHub, or Microsoft. Once you are in, there are a few quick steps to unlock the full product: confirm your email address, set up your profile, and turn on two-step sign-in for extra safety.
+
+<Steps>
+  <Step title="Sign up">
+    Go to [suresign.si](https://suresign.si) and click **Sign up**. You can create an account with your email address and a password, use a magic link sent to your email, or use single sign-on with Google, GitHub, or Microsoft. If you choose a password, pick a strong one. Suresign checks its strength when you sign up.
+  </Step>
+  <Step title="Confirm your email address">
+    Check your inbox for a confirmation email and click the link inside. Confirming your address is required before you can send documents, create open links, or seal documents you sign yourself. It also makes sure your address appears correctly on certificates.
+
+    The one exception is the sample NDA from your dashboard, which goes only to your own address and does not show it as the sender.
+  </Step>
+  <Step title="Set up your profile">
+    Go to **Settings** > **Profile** to add your name, photo, and time zone. Your name appears on certificates and in emails.
+  </Step>
+  <Step title="Add your signatures">
+    Go to **Settings** > **Signatures** to create one or more signatures. You can type your name, draw a signature, or upload an image. You can also create initials the same way. Set a default signature for quick signing. Every signature carries your Signature ID, which is printed under whichever style you use.
+  </Step>
+  <Step title="Choose your notifications">
+    Go to **Settings** > **Notifications** to decide what lands in your bell. You can choose which events you want alerts for.
+  </Step>
+  <Step title="Enable two-step sign-in">
+    Go to **Settings** > **Security** and turn on two-step sign-in. You will need an authenticator app on your phone that supports TOTP. The app gives you a new code every 30 seconds. Save your one-time recovery codes in a safe place. They are the only way back into your account if you lose your device.
+  </Step>
+  <Step title="Review your devices">
+    In **Settings** > **Security**, review the list of known browsers and networks. Suresign emails you when your account signs in from a browser or network we have not seen before. You can revoke any session or sign out everywhere at once. Changing your password signs out every other device.
+  </Step>
+</Steps>
+
+## Your sign-in options
+
+| Method | How it works |
+| --- | --- |
+| Email and password | Your password is scrambled using a strong one-way lock called bcrypt. It is never stored, logged, or emailed in plain text. |
+| Magic link | A single-use, time-limited link is emailed to you. Click it to sign in without a password. |
+| Google, GitHub, Microsoft | Uses a standard called OAuth 2.0. A special state parameter bound to a short-lived cookie protects you from fake login attempts. |
+| Two-step with recovery codes | An authenticator app gives rotating codes. Recovery codes are one-time backups you store yourself. |
+
+## Account lockout
+
+If someone tries to guess your password, the account locks after five failed attempts. At first the lock lasts one minute. After more failures it grows to five minutes, then fifteen, then thirty, and up to an hour. The count resets after a successful sign-in or after a full day with no failed tries. Failed sign-ins are kept in the security log for 180 days.
+
+<Tip>
+  If you forget your password, use the password reset link on the sign-in screen. The reset token is single-use and time-limited for safety.
+</Tip>
+
+## Why confirmation matters
+
+Until you confirm your email, you can sign in and explore, but you cannot send documents, create open links, or seal self-signed documents. This is because your email address appears on certificates and in sender fields. We want to be sure it is really yours before it goes out on official documents.
+
+## Next steps
+
+<CardGroup cols={3}>
+  <Card title="Send your first document" icon="rocket" href="/quickstart">
+    Upload a file or use the agent to draft and send in under a minute.
+  </Card>
+
+  <Card title="Invite your team" icon="users" href="/workspace/team-and-roles">
+    Add teammates on Pro or Business and give each person the right role.
+  </Card>
+
+  <Card title="Review security controls" icon="shield" href="/workspace/security">
+    Learn what Suresign does to protect your documents and what you should do too.
+  </Card>
+</CardGroup>

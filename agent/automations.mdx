@@ -1,0 +1,85 @@
+---
+title: "Set Up Suresign Agent Automations"
+sidebarTitle: "Automations"
+description: "Learn how Suresign automations chase unsigned documents, warn before expiry, send weekly summaries, copy recipients on completion, and send reminders on a fixed schedule."
+---
+
+Automations let the Suresign agent repeat tasks for you. Instead of manually reminding signers or checking what expires soon, you tell the agent how often to do it, and it runs on schedule. Every automation appears on its own card before it acts, so you always see what is happening.
+
+<Note>
+  Automations are available on Pro and Business plans only.
+</Note>
+
+## Types of automations
+
+There are five kinds of automations you can set up:
+
+| Type | What it does | Example |
+| --- | --- | --- |
+| Chase unsigned | Sends follow-ups to people who have not signed yet | Every Monday at 09:00, remind anyone who has had a document for 3 days or more |
+| Before expiry | Warns you before a document expires, then gives it more time | 2 days before any document expires, extend it by 7 days |
+| Weekly summary | Sends you a summary of document activity | Every Monday at 09:00 |
+| When something completes | Sends a copy of the signed PDF and certificate to someone | Email the signed document to your assistant |
+| A reminder for me | Sends a note to your own email on a fixed date | Remind yourself to follow up on February 1 at 10:00 |
+
+Every automation runs in your own time zone, so the schedule never drifts when you travel.
+
+## How to set one up
+
+<Steps>
+  <Step title="Open the Automations tab">
+    Go to the **Agent** page in the sidebar, then click **Automations**.
+  </Step>
+  <Step title="Choose the type">
+    Pick what you want the agent to do: chase signers, warn before expiry, send a summary, send a copy, or set a personal reminder.
+  </Step>
+  <Step title="Set the schedule">
+    Choose how often it runs. For example: every 3 days, a day before expiry, or every Monday at 9:00. Weekly summary and chase automations can run daily or on a specific weekday. Reminders run once on the date you choose.
+  </Step>
+  <Step title="Review the card">
+    The agent shows you a card describing exactly what it will do and when. Read it to confirm it matches what you want.
+  </Step>
+  <Step title="Approve or let it run">
+    By default, the agent asks for your approval before the first run. On Business plans, an admin can allow chase and expiry automations to run on their own without asking each time.
+  </Step>
+</Steps>
+
+## Who can do what
+
+| Role | What they can do |
+| --- | --- |
+| Anyone who can start a chat | Create, edit, or delete their own automations |
+| Admin | Switch automations between "Ask first" and "Run on its own" for the whole workspace |
+| Viewer | Cannot create automations |
+
+If your role in the workspace changes to one that cannot send reminders or extend documents, the agent pauses your automation automatically and tells you why.
+
+## What happens when an automation fails
+
+If an automation fails three times in a row, the agent pauses it automatically. You will see a notice in the run history. You can check what went wrong, fix it, and start the automation again.
+
+One-off reminders that fail are retried a few minutes later instead of being paused right away. If they still fail, they are paused and you get a notice.
+
+<Warning>
+  Only reminders and extensions can run without your approval, and only where a workspace admin has allowed it. The agent cannot send a new document or invite someone without you pressing the button first.
+</Warning>
+
+## Example: chase a late signer
+
+Imagine you sent a consulting agreement to Alex Chen and Priya Shah. Priya signed, but Alex has not. You set an automation to chase unsigned every 3 days. The agent sends Alex a polite reminder every 3 days until he signs or the document expires. You see each reminder in **Needs you** before it goes out.
+
+## Next steps
+
+<CardGroup>
+  <Card title="Ask and act" icon="message-circle" href="/agent/ask-and-act">
+    Ask the agent to remind someone or extend a date on the spot.
+  </Card>
+
+  <Card title="House style and memory" icon="brain" href="/agent/house-style-and-memory">
+    Teach the agent your preferences so every automation starts from what it knows about you.
+  </Card>
+
+  <Card title="Staying in control" icon="shield" href="/agent/staying-in-control">
+    See how approvals, audit trails, and admin permissions keep you in charge.
+  </Card>
+</CardGroup>

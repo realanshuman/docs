@@ -1,0 +1,84 @@
+---
+title: "Verify a signed document: check if it is genuine"
+description: "Drop a signed PDF into suresign.si/verify to check if it is the original sealed file. Your file never leaves your device. Results: verified, altered, or no record."
+sidebarTitle: "Verify a Document"
+---
+
+Anyone who receives a signed PDF can check whether it is the exact file Suresign sealed when the last person signed. Verification is free, needs no account, and your file never leaves your computer.
+
+Go to [suresign.si/verify](https://suresign.si/verify) to check any signed document.
+
+## How verification works
+
+<Steps>
+  <Step title="Drop in the signed PDF">
+    Click **Choose a file** or drag and drop the signed PDF into the box on the page.
+  </Step>
+  <Step title="Your browser reads the file">
+    The PDF opens right on your own device. Nothing is uploaded anywhere while it is being read.
+  </Step>
+  <Step title="It becomes a fingerprint">
+    The file is reduced to a 64-character fingerprint using SHA-256. Change one letter anywhere in the document and every single character of the fingerprint changes. That is what makes it reliable.
+  </Step>
+  <Step title="The fingerprint is looked up">
+    Only the 64-character fingerprint is sent to Suresign. A match means this is, byte for byte, the exact file that was sealed. The record behind it comes back to your browser.
+  </Step>
+</Steps>
+
+## The three possible results
+
+| Result | What it means |
+| --- | --- |
+| **Verified** | This document is genuine and unchanged. Every byte matches the copy sealed when the last person signed. You see the completion date, the signers with partly masked emails, the unbroken audit trail entries, and the public record entry. |
+| **Altered** | The fingerprint does not match. The file has been altered since it was sealed, or it is not the original signed PDF. |
+| **No record** | There is no matching fingerprint in the system. The file was not signed through Suresign, or it was completed before public recordkeeping began. |
+
+<Note>
+  Deleted documents still verify. If the sender deleted their copy, your copy did not stop being real. The result will note that the sender has since deleted their copy, but the file itself is still genuine.
+</Note>
+
+## What a Verified result proves
+
+A **Verified** result proves four things:
+
+1. The file you hold is exactly the file that was sealed when signing finished.
+2. You can see who was asked to sign, and when each person did.
+3. The history behind the document is unbroken and unedited.
+4. It is in the public record, published every night.
+
+## What verification does not prove
+
+No electronic signature, including Suresign, can prove:
+
+- Who was actually sitting at the keyboard when they signed. This is true of every e-signature service in the world.
+- That a printed or scanned copy is genuine. Only the original PDF matches.
+
+## Finding the verify address on the document
+
+The address [suresign.si/verify](https://suresign.si/verify) is printed on every page of every sealed PDF, in the strip at the bottom. You do not need to remember it: it is right there on the document itself.
+
+The same strip also prints the document identifier, which the checker reads to distinguish "this is our document but somebody changed it" from "we have never seen this file."
+
+## Your privacy
+
+Your file never leaves your device. All that is sent to Suresign is the 64-character fingerprint. The full document content stays entirely on your computer.
+
+<Note>
+  Always keep your own copy of the completed PDF and certificate. Verification works best when you hold the original signed file.
+</Note>
+
+## Related pages
+
+<CardGroup cols={3}>
+  <Card title="Audit trail and certificate" icon="scroll" href="/proof/audit-trail-and-certificate">
+    Learn how the unchangeable history and certificate are built.
+  </Card>
+
+  <Card title="Legal validity" icon="scale" href="/proof/legal-validity">
+    Understand which laws recognise Suresign signatures.
+  </Card>
+
+  <Card title="Browse the public record" icon="globe" href="https://suresign.si/ledger">
+    See the nightly checkpointed ledger of completed document fingerprints.
+  </Card>
+</CardGroup>

@@ -1,20 +1,100 @@
 ---
-title: "Introduction"
-description: "Welcome to your project"
+title: "Suresign: your agent drafts and sends, you sign"
+description: "Suresign is an agentic e-signature workspace. Draft, send, and sign documents. Every signed file gets a sealed PDF, certificate, and unchangeable audit trail."
+sidebarTitle: "Introduction"
 ---
 
-Write a short description of your product here. What it does, who it's for, and what they can accomplish with it.
+Suresign is an e-signature workspace with a built-in agent that helps you get documents signed. You can describe what you need in plain words, and the agent drafts the agreement, places the signature boxes, and waits for your approval to send. You can also upload a PDF, Word file, or image, place the fields yourself, and send it out. Or sign a document yourself with no one else involved. Every finished document becomes a sealed, flattened PDF with a certificate of completion and a history no one can edit.
 
-<Tip>
-  Ready to make this your own? Start by editing this page. Update your `docs.json` file to customize your site. Then fill out the [Quickstart](/quickstart) page.
-</Tip>
+Think of it like this. You need a mutual NDA with Northwind Studio, two years, New York law. You type that sentence. The agent drafts the agreement, puts a signature box for you and one for Dana Lee from Northwind, and shows you a card to review and send. You press the button, Dana gets a signing link by email, and when she signs, a sealed copy comes to you both.
 
-<Card title="Quickstart" icon="rocket" href="/quickstart">
-  This card links to the quickstart page in your project.
-</Card>
-<Card title="Components" icon="puzzle-piece" href="https://mintlify.com/docs/components">
-  Add cards, callouts, steps, tabs, and more to design and structure your pages.
-</Card>
-<Card title="Settings" icon="gear" href="https://mintlify.com/docs/organize/settings">
-  Set your site name, branding, and navigation in the `docs.json` file.
-</Card>
+<Info>
+  **The agent does the work. People do the signing.** The agent can draft your agreement, place the signature boxes, and send it out for you once you approve. It never signs anything. Only you, or the people you send the document to, can sign.
+</Info>
+
+That is one of three ways to work with Suresign.
+
+<CardGroup cols={2}>
+  <Card title="Draft with the agent" icon="bot" href="/agent/draft-an-agreement">
+    Describe an agreement in a sentence. The agent drafts it, places the boxes, and prepares it to send.
+  </Card>
+
+  <Card title="Upload and send a PDF" icon="file-arrow-up" href="/sending/upload-and-place-fields">
+    Upload a PDF, Word file, or image. Drag fields onto the page and email each signer a signing link.
+  </Card>
+
+  <Card title="Sign it yourself" icon="pen-nib" href="/sending/sign-it-yourself">
+    Upload, sign, and seal a document on your own. Get the same proof as a multi-signer document.
+  </Card>
+
+  <Card title="Verify a document" icon="shield-check" href="/proof/verify-a-document">
+    Drop any signed PDF into the checker to see if it is genuine, changed, or unknown.
+  </Card>
+
+  <Card title="Plans and pricing" icon="credit-card" href="/workspace/plans-and-billing">
+    Free for 10 documents a month. Pro at \$15. Business at \$49. One price per workspace.
+  </Card>
+
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Send your first document in under a minute. No credit card needed.
+  </Card>
+</CardGroup>
+
+## How signing works from start to finish
+
+<Steps>
+  <Step title="Draft or upload">
+    Start with a sentence to the agent, or upload a PDF, Word file, or image. The agent can also place boxes on an uploaded file for you.
+  </Step>
+  <Step title="Place fields">
+    Drag and drop 13 field types onto the document. These include Signature, Initials, Date signed, Name, Text, Number, Checkbox, and file uploads. The date fills itself when the signer finishes.
+  </Step>
+  <Step title="Add people and choose order">
+    Enter each person's name and email. You can add up to 50 people per document. Set the signing order to "One after another" or "All at once." You can also add approvers and people who get a copy, plus a personal message for each person.
+  </Step>
+  <Step title="Send or save as template">
+    Review and click Send. Each person gets their own signing link by email. Or save the setup as a template to use again.
+  </Step>
+  <Step title="Track and follow up">
+    Watch as people open and sign. Send reminders, extend the expiry date, or resend a document that expired. You can also ask the agent to check who still needs to sign.
+  </Step>
+  <Step title="Everyone gets a sealed copy">
+    When the last person signs, the PDF is flattened and sealed. A certificate of completion, SHA-256 fingerprints, and a hash-chained audit trail are attached. Everyone on the document gets a signed copy by email. An entry is also added to the nightly public record.
+  </Step>
+</Steps>
+
+## What is proof, in plain words
+
+An **audit trail** is a detailed history of everything that happened to a document. Who sent it, who opened it, who signed it, when, and from where. In Suresign, each entry in this history is linked to the one before it using a mathematical lock called a hash. If anyone tries to change a single entry, every lock after it breaks. That is what "hash-chained" means.
+
+A **certificate of completion** is a page that comes with every signed document. It lists the document title, every signer, the time each person signed, the fingerprint of the file, and the full history.
+
+The **public record** is an open log published every night at [suresign.si/ledger](https://suresign.si/ledger). It holds only fingerprints and reference codes, no names or content, so anyone can check that a document was sealed and nothing was rewritten.
+
+Together these prove that the file you hold is exactly the file that was signed, and that no one tampered with the history.
+
+## Plans at a glance
+
+| Plan | Price | Documents | Team | Templates | Open links |
+| --- | --- | --- | --- | --- | --- |
+| Free | \$0/month | 10/month | Just you | 3 | 1 |
+| Pro | \$15/month | 100/month | Up to 5 | Unlimited | Unlimited |
+| Business | \$49/month | Unlimited | Unlimited | Unlimited | Unlimited |
+
+All plans include the full signing product, 13 field types, signer checks, reminders, the agent with monthly credits, and the proof layer. The person signing never pays anything and never needs an account.
+
+## Next steps
+
+<CardGroup cols={3}>
+  <Card title="Send your first document" icon="rocket" href="/quickstart">
+    Follow the quickstart to upload, place fields, add signers, and send.
+  </Card>
+
+  <Card title="Set up your account" icon="user" href="/getting-started/account-setup">
+    Confirm your email, turn on two-step sign-in, and secure your account.
+  </Card>
+
+  <Card title="Meet the agent" icon="bot" href="/agent/overview">
+    Learn how the AI agent drafts, places, sends, reminds, and answers questions.
+  </Card>
+</CardGroup>

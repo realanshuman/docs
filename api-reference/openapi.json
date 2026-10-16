@@ -1,0 +1,378 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Suresign API",
+    "version": "1.0.0",
+    "description": "Read the documents in your Suresign workspace and download their PDFs. Available on the Pro and Business plans."
+  },
+  "servers": [
+    { "url": "https://suresign.si", "description": "Suresign" }
+  ],
+  "security": [{ "bearerAuth": [] }],
+  "tags": [
+    { "name": "Workspace", "description": "Check which workspace a key opens." },
+    { "name": "Documents", "description": "List, read and download documents." }
+  ],
+  "paths": {
+    "/api/v1/me": {
+      "get": {
+        "tags": ["Workspace"],
+        "summary": "Check your API key",
+        "description": "Returns the workspace and key a request is authenticated as, plus a count of documents by status. Call this first to confirm a new key works.",
+        "operationId": "getMe",
+        "responses": {
+          "200": {
+            "description": "The workspace this key opens.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "workspace": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "string" },
+                            "name": { "type": "string" }
+                          }
+                        },
+                        "key": {
+                          "type": "object",
+                          "properties": {
+                            "id": { "type": "string" },
+                            "name": { "type": "string" }
+                          }
+                        },
+                        "documents": {
+                          "type": "object",
+                          "description": "Document counts keyed by lowercase status, for example `completed`. Statuses with no documents are left out.",
+                          "additionalProperties": { "type": "integer" }
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "data": {
+                    "workspace": { "id": "ws_123", "name": "Northwind Studio" },
+                    "key": { "id": "key_123", "name": "crm-sync" },
+                    "documents": { "draft": 2, "sent": 3, "completed": 14 }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PlanRequired" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/api/v1/documents": {
+      "get": {
+        "tags": ["Documents"],
+        "summary": "List documents",
+        "description": "Lists the documents in the key's workspace, newest first. Deleted documents are not included. Uses cursor pagination: pass the `nextCursor` from one response as `cursor` on the next request.",
+        "operationId": "listDocuments",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "description": "Only return documents with this status.",
+            "schema": {
+              "type": "string",
+              "enum": ["DRAFT", "SENT", "VIEWED", "COMPLETED", "DECLINED", "CANCELLED", "EXPIRED"]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "How many documents to return, from 1 to 100.",
+            "schema": { "type": "integer", "minimum": 1, "maximum": 100, "default": 25 }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "description": "The `nextCursor` value from the previous page. Leave it out to get the first page.",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A page of documents.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Document" }
+                    },
+                    "nextCursor": {
+                      "type": ["string", "null"],
+                      "description": "Pass this as `cursor` to get the next page. `null` when there are no more documents."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PlanRequired" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/api/v1/documents/{id}": {
+      "get": {
+        "tags": ["Documents"],
+        "summary": "Get a document",
+        "description": "Returns one document with its recipients, plus an `actions` map that says what each recipient is being asked to do.",
+        "operationId": "getDocument",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The document ID.",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The document.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "allOf": [
+                        { "$ref": "#/components/schemas/Document" },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "actions": {
+                              "type": "object",
+                              "description": "Recipient ID mapped to what that person is asked to do: `sign` (a signer with signature, initials or stamp boxes), `approve` (an approver) or `fill` (everyone else, such as a signer who only fills in text).",
+                              "additionalProperties": {
+                                "type": "string",
+                                "enum": ["sign", "approve", "fill"]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PlanRequired" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/api/v1/documents/{id}/download": {
+      "get": {
+        "tags": ["Documents"],
+        "summary": "Download a document PDF",
+        "description": "Downloads a PDF for the document: the sealed signed copy, the original upload, or the certificate of completion. Every download is recorded in the document's audit trail as made by your API key.",
+        "operationId": "downloadDocument",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The document ID.",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "description": "Which file to download. Defaults to `signed` when the document is complete, otherwise `original`.",
+            "schema": { "type": "string", "enum": ["signed", "original", "certificate"] }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The PDF file.",
+            "content": {
+              "application/pdf": {
+                "schema": { "type": "string", "format": "binary" }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "402": { "$ref": "#/components/responses/PlanRequired" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": {
+            "description": "No such document, or the file is not available yet (for example, no signed file or certificate until the document is complete).",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" },
+                "example": { "error": "No signed file yet. The document is not complete." }
+              }
+            }
+          },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Your workspace API key, which starts with `dtd_`. Send it as `Authorization: Bearer dtd_...`."
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": { "type": "string", "description": "A plain-language explanation of what went wrong." }
+        }
+      },
+      "Recipient": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "role": { "type": "string", "enum": ["SIGNER", "APPROVER", "CC", "VIEWER"] },
+          "status": {
+            "type": "string",
+            "enum": ["PENDING", "SENT", "VIEWED", "SIGNED", "APPROVED", "DECLINED", "BOUNCED"]
+          },
+          "order": { "type": "integer", "description": "Position in the signing order." },
+          "sentAt": { "type": ["string", "null"], "format": "date-time" },
+          "viewedAt": { "type": ["string", "null"], "format": "date-time" },
+          "completedAt": { "type": ["string", "null"], "format": "date-time", "description": "When this person signed or approved." },
+          "declinedAt": { "type": ["string", "null"], "format": "date-time" },
+          "declineReason": { "type": ["string", "null"] }
+        }
+      },
+      "Document": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["DRAFT", "SENT", "VIEWED", "PARTIALLY_SIGNED", "COMPLETED", "DECLINED", "EXPIRED", "CANCELLED"]
+          },
+          "fileName": { "type": "string" },
+          "pageCount": { "type": "integer" },
+          "fileSize": { "type": "integer", "description": "Size in bytes." },
+          "signingOrder": { "type": "string", "enum": ["PARALLEL", "SEQUENTIAL"] },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "sentAt": { "type": ["string", "null"], "format": "date-time" },
+          "completedAt": { "type": ["string", "null"], "format": "date-time" },
+          "expiresAt": { "type": ["string", "null"], "format": "date-time" },
+          "progress": {
+            "type": "object",
+            "description": "How many of the people asked to sign or approve have done so. CC and viewer recipients are not counted.",
+            "properties": {
+              "done": { "type": "integer" },
+              "total": { "type": "integer" }
+            }
+          },
+          "recipients": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Recipient" }
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": { "type": "string", "example": "/api/v1/documents/doc_123" },
+              "download": { "type": "string", "example": "/api/v1/documents/doc_123/download" }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "A query parameter was not valid.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "The key is missing, malformed, revoked or unknown.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" },
+            "example": { "error": "That key is not valid." }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "The workspace is suspended, so its API keys are refused.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" },
+            "example": { "error": "This workspace is suspended, so its API keys are refused." }
+          }
+        }
+      },
+      "PlanRequired": {
+        "description": "The key is valid, but the workspace's plan does not include the API. The key is kept and works again once the workspace is on Pro or Business.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": { "type": "string" },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "code": { "type": "string", "example": "plan_limit" },
+                    "upgrade": { "type": ["string", "null"], "example": "pro" },
+                    "href": { "type": "string", "description": "Where to upgrade." }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "No document with that ID in this workspace.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" },
+            "example": { "error": "No such document." }
+          }
+        }
+      },
+      "RateLimited": {
+        "description": "More than 300 requests in a minute with this key.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/Error" },
+            "example": { "error": "Rate limit exceeded. Try again in 12 seconds." }
+          }
+        }
+      }
+    }
+  }
+}

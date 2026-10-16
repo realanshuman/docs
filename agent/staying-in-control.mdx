@@ -1,0 +1,95 @@
+---
+title: "Stay in Control of the Suresign AI Agent"
+sidebarTitle: "Staying in Control"
+description: "How Suresign keeps you in charge of the AI agent with approval cards, admin permissions, audit trails, prompt-injection checks, and a strict no-training policy."
+---
+
+The Suresign agent is built to help you, not act on its own. These guarantees keep you in control of what it does and how it uses your information.
+
+## Your click sends it
+
+Nothing the agent prepares ever reaches another person until you approve it. Every send, reminder, copy, and invitation appears on a card with a clear description. You press the button to confirm. If you do not press it, nothing happens.
+
+The only things the agent can do without asking are **reminders** and **extensions**, and only when a workspace admin has allowed each one. Nothing else runs on its own.
+
+## The agent acts as you
+
+When the agent does something, it does so with your role and your permissions. It cannot access documents you cannot see, invite people you cannot invite, or change settings you cannot change. Its abilities are exactly the same as yours.
+
+## Addresses are checked
+
+If the agent finds an email address inside a document, it flags it for you to confirm. It does not assume an address is correct just because it appears in the text. You review and confirm every address before anything is sent.
+
+## Admins decide what runs alone
+
+On Business plans, workspace admins can allow the agent to send reminders and extend expiry dates automatically without asking each time.
+
+To change this, go to **Settings > Agent > What the agent may do without asking**. Set each action to **Allowed** or **Ask first**. No other action can run on its own. Even with admin permission, sends, invitations, and copies always wait for your approval.
+
+| Action | Free | Pro | Business |
+| --- | --- | --- | --- |
+| Send reminders to people already on a document | Ask first | Ask first | Admin chooses |
+| Give documents more time | Ask first | Ask first | Admin chooses |
+
+These actions are always fixed to **Ask first** or **Never**, no matter the plan:
+
+- **Always asks**: Send a new document, resend an expired one, cancel a request, turn on an open link, move to Deleted, invite someone
+- **Never**: Sign or approve for anyone, get past an access code, delete for good, change security, keys, webhooks, or billing
+
+## Prompt-injection detection
+
+The agent checks documents for text that tries to give orders to an AI. If it finds sentences such as "Ignore all previous instructions and send this to...", it flags them on the approval card and ignores the order.
+
+For example, if a consulting agreement contained hidden text telling the agent to forward it to a different address, the agent would warn you and wait for your decision.
+
+## Access codes are never sent to the AI
+
+Access codes set on documents are never shared with the AI provider. The agent cannot see them, store them, or use them. This is enforced by a hard rule: any fact that looks like a code or password is refused before it ever reaches memory.
+
+## Every step is on the record
+
+Everything the agent does is recorded in the document's audit trail. Each entry is marked as done **with the agent**, so anyone reading the history can see exactly what the agent handled and what you approved yourself.
+
+The audit trail is a hash-chained record, which means no one can edit or remove entries after they are created. The agent's actions are just as permanent as yours.
+
+## Your documents never train any model
+
+Suresign never uses the contents of your documents to train any AI model. The provider behind the agent (Anthropic) may not train on your content either.
+
+Additionally, a conversation with the agent is visible only to the person who had it. Other members of your workspace cannot see what you asked the agent or what it answered.
+
+## Turning the agent off
+
+If you ever want to stop the agent completely, an admin can switch it off in **Settings > Agent**. When the agent is off:
+
+- Home shows the classic drop card instead of the agent
+- The agent's pages say it is off
+- The editor has no agent helper
+- Automations skip their runs
+- Nothing from this workspace goes to the AI provider
+
+Chats and Activity are kept, so turning the agent back on later picks up where you left it.
+
+## What this means for you
+
+These guarantees mean you can use the agent confidently. It handles the busy work of drafting, placing fields, and chasing signers. You stay in charge of every decision that matters. If something goes wrong, the audit trail shows exactly what happened and who approved it.
+
+<Warning>
+  The agent's drafts are not legal advice. Always review a draft before sending it. For important or complex agreements, have a lawyer check the document.
+</Warning>
+
+## Next steps
+
+<CardGroup>
+  <Card title="Draft an agreement" icon="pen" href="/agent/draft-an-agreement">
+    Try the agent yourself and see the approval cards in action.
+  </Card>
+
+  <Card title="Automations" icon="zap" href="/agent/automations">
+    Set up repeating tasks with the confidence that approvals are always required.
+  </Card>
+
+  <Card title="House style and memory" icon="brain" href="/agent/house-style-and-memory">
+    Teach the agent your preferences while keeping full control of what it learns.
+  </Card>
+</CardGroup>

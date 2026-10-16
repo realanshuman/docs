@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "almond",
   "name": "Suresign",
   "colors": {
     "primary": "#16A34A",
@@ -9,29 +9,132 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "pages": [
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
-    ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Website",
+          "icon": "globe",
+          "href": "https://suresign.si"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Verify a Document",
+          "icon": "badge-check",
+          "href": "https://suresign.si/verify"
+        },
+        {
+          "anchor": "Public Record",
+          "icon": "scroll",
+          "href": "https://suresign.si/ledger"
+        },
+        {
+          "anchor": "Contact Support",
+          "icon": "life-ring",
+          "href": "https://suresign.si/contact"
         }
       ]
-    }
+    },
+    "tabs": [
+      {
+        "tab": "Guides",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Get Started",
+            "icon": "rocket",
+            "pages": [
+              "index",
+              "quickstart",
+              "getting-started/account-setup"
+            ]
+          },
+          {
+            "group": "The Agent",
+            "icon": "sparkles",
+            "pages": [
+              "agent/overview",
+              "agent/draft-an-agreement",
+              "agent/ask-and-act",
+              "agent/automations",
+              "agent/house-style-and-memory",
+              "agent/staying-in-control",
+              "agent/credits"
+            ]
+          },
+          {
+            "group": "Send Documents",
+            "icon": "paper-plane",
+            "pages": [
+              "sending/upload-and-place-fields",
+              "sending/recipients-and-signing-order",
+              "sending/signer-checks",
+              "sending/reminders-and-expiry",
+              "sending/templates-and-open-links",
+              "sending/sign-it-yourself"
+            ]
+          },
+          {
+            "group": "Signing & Proof",
+            "icon": "shield-check",
+            "pages": [
+              "sending/signing-a-document",
+              "proof/audit-trail-and-certificate",
+              "proof/verify-a-document",
+              "proof/legal-validity"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Developers",
+        "icon": "code",
+        "groups": [
+          {
+            "group": "Get Started",
+            "icon": "terminal",
+            "pages": [
+              "developers/overview",
+              "developers/authentication"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "icon": "plug",
+            "pages": [
+              "api-reference/introduction",
+              "developers/webhooks",
+              "developers/mcp"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "icon": "brackets-curly",
+            "openapi": "api-reference/openapi.json"
+          }
+        ]
+      },
+      {
+        "tab": "Account & Help",
+        "icon": "life-ring",
+        "groups": [
+          {
+            "group": "Workspace",
+            "icon": "users",
+            "pages": [
+              "workspace/team-and-roles",
+              "workspace/security"
+            ]
+          },
+          {
+            "group": "Billing & Help",
+            "icon": "credit-card",
+            "pages": [
+              "workspace/plans-and-billing",
+              "workspace/faq"
+            ]
+          }
+        ]
+      }
+    ]
   },
   "logo": {
     "light": "/logo/light.svg",
@@ -40,14 +143,18 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:support@mintlify.com"
+        "href": "https://suresign.si/pricing",
+        "label": "Pricing"
+      },
+      {
+        "href": "https://suresign.si/login",
+        "label": "Log in"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://app.mintlify.com"
+      "label": "Sign up free",
+      "href": "https://suresign.si/signup"
     }
   },
   "contextual": {
@@ -63,10 +170,56 @@
     ]
   },
   "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
+    "links": [
+      {
+        "header": "Product",
+        "items": [
+          {
+            "label": "Sign up",
+            "href": "https://suresign.si/signup"
+          },
+          {
+            "label": "Pricing",
+            "href": "https://suresign.si/pricing"
+          },
+          {
+            "label": "The agent",
+            "href": "https://suresign.si/ai"
+          },
+          {
+            "label": "Verify a document",
+            "href": "https://suresign.si/verify"
+          }
+        ]
+      },
+      {
+        "header": "Company",
+        "items": [
+          {
+            "label": "About",
+            "href": "https://suresign.si/about"
+          },
+          {
+            "label": "Contact",
+            "href": "https://suresign.si/contact"
+          },
+          {
+            "label": "Security",
+            "href": "https://suresign.si/legal/security"
+          },
+          {
+            "label": "Privacy Policy",
+            "href": "https://suresign.si/legal/privacy"
+          },
+          {
+            "label": "Terms of Service",
+            "href": "https://suresign.si/legal/terms"
+          }
+        ]
+      }
+    ]
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
   }
 }

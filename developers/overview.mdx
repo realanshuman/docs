@@ -1,0 +1,53 @@
+---
+title: "Build with Suresign: API, webhooks and MCP overview"
+sidebarTitle: "Overview"
+description: "Connect your apps to Suresign. Read documents and download signed PDFs with the API, react to signing events with webhooks, and plan for MCP access."
+---
+
+Suresign gives developers three ways to connect their own tools to a workspace: an API to read documents and download PDFs, signed webhooks that tell your app when something happens, and (coming soon) an MCP server so AI assistants can work with your documents. This page explains what each one is for and where to start.
+
+<Note>
+  API keys, the API and webhooks are available on the **Pro** and **Business** plans. See [Plans & Billing](/workspace/plans-and-billing).
+</Note>
+
+## What you can build
+
+| Tool | What it does | Typical use |
+| --- | --- | --- |
+| **API** | List and read your documents, and download signed PDFs and certificates | Save every completed contract in your own storage or CRM |
+| **Webhooks** | Send a signed message to your server when a document is sent, opened, signed, declined or completed | Update a deal to "Signed" the moment the last person signs |
+| **MCP** (planned) | Let AI assistants work with your Suresign workspace | Ask your own AI tools who still has to sign |
+
+## How it fits together
+
+<Steps>
+  <Step title="Create an API key">
+    An admin creates a key in **Settings > Developers**. It starts with `dtd_` and is shown once, so store it somewhere safe. See [Authentication](/developers/authentication).
+  </Step>
+  <Step title="Read documents with the API">
+    Send the key as `Authorization: Bearer dtd_...` to list documents and download PDFs from `https://suresign.si/api/v1`. See [REST API](/api-reference/introduction).
+  </Step>
+  <Step title="Listen for events with webhooks">
+    Add a webhook endpoint so your app hears about signing events as they happen, instead of checking again and again. See [Webhooks](/developers/webhooks).
+  </Step>
+</Steps>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/developers/authentication">
+    Create and protect your API keys.
+  </Card>
+
+  <Card title="API Introduction" icon="code" href="/api-reference/introduction">
+    What the API can do today.
+  </Card>
+
+  <Card title="Webhooks" icon="webhook" href="/developers/webhooks">
+    Receive and verify signing events.
+  </Card>
+
+  <Card title="MCP" icon="robot" href="/developers/mcp">
+    Connect AI assistants to Suresign.
+  </Card>
+</CardGroup>
