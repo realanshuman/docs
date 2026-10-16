@@ -7,7 +7,7 @@
     "light": "#5B8FFF",
     "dark": "#0E2AF5"
   },
-  "favicon": "/images/suresign-favicon.svg",
+  "favicon": "https://suresign.si/favicon.svg",
   "navigation": {
     "global": {
       "anchors": [
@@ -137,8 +137,8 @@
     ]
   },
   "logo": {
-    "light": "/images/suresign-logo-light.svg",
-    "dark": "/images/suresign-logo-dark.svg",
+    "light": "https://suresign.si/brand/email-lockup.png",
+    "dark": "https://suresign.si/brand/email-lockup-dark.png",
     "href": "https://suresign.si"
   },
   "navbar": {
