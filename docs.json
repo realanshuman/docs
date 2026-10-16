@@ -7,7 +7,7 @@
     "light": "#5B8FFF",
     "dark": "#0E2AF5"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/images/suresign-favicon.svg",
   "navigation": {
     "global": {
       "anchors": [
@@ -137,8 +137,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg",
+    "light": "/images/suresign-logo-light.svg",
+    "dark": "/images/suresign-logo-dark.svg",
     "href": "https://suresign.si"
   },
   "navbar": {
