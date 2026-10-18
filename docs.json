@@ -121,7 +121,8 @@
             "icon": "users",
             "pages": [
               "workspace/team-and-roles",
-              "workspace/security"
+              "workspace/security",
+              "workspace/integrations"
             ]
           },
           {

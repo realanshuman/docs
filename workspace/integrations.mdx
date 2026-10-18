@@ -1,0 +1,108 @@
+---
+title: "Integrations: connect Suresign to Drive, Slack, Sheets, and more"
+description: "Save signed copies to Google Drive, Dropbox, or OneDrive, tell a Slack or Teams channel when something is signed, and keep a row per document in Google Sheets."
+sidebarTitle: "Integrations"
+---
+
+Integrations send your documents to the apps your team already uses. Documents are signed in Suresign, then go only to the apps you connect. Open **Integrations** from the sidebar to see every app, what it does, and whether it is connected.
+
+## Available apps
+
+| App | What it does | Plans |
+| --- | --- | --- |
+| Google Drive | Save every signed copy to a folder, and pick files from Drive when you send | Pro and Business |
+| Dropbox | Save signed copies to a Dropbox folder, and send files straight from it | Pro and Business |
+| OneDrive and SharePoint | Save signed copies to OneDrive or a SharePoint folder, and send files from there | Pro and Business |
+| Slack | Post in a channel when a document completes or is declined | Pro and Business |
+| Microsoft Teams | The same notices, in a Teams channel | Pro and Business |
+| Google Sheets | One row per document (title, people, status, dates), kept up to date | Pro and Business |
+| Zapier | Triggers when a document is sent, opened, completed, or declined. Actions to send a template or find a document | Every plan. Free has a few runs a month |
+| Make | The same triggers and actions as Zapier, for Make scenarios | Every plan. Free has a few runs a month |
+| API and webhooks | API keys and signed webhooks for your own systems, and a write API on Business | Pro and Business |
+
+### Coming soon
+
+Google Calendar, HubSpot, Salesforce, Zoho CRM, the Gmail add-on, the Outlook add-in, and Claude and ChatGPT show as **Coming soon**. Select **Tell me when it's ready** on an app's page to get an email when it ships.
+
+Not seeing your app? [Tell us which one](https://suresign.si/contact). The most requested apps are built next.
+
+## What happens on its own
+
+Recipes are ready-made setups. Pick one, connect its app, and it runs on every new document.
+
+<AccordionGroup>
+  <Accordion title="File every signed copy">
+    When any document completes, the signed PDF and its certificate are saved to the folder you pick in Google Drive, Dropbox, or OneDrive. Each file is named with the document's title and the date it completed. You can also turn on a folder for each client, and choose whether the certificate is saved as its own file beside the PDF.
+  </Accordion>
+  <Accordion title="Offer letters that file themselves">
+    When a document from the template you pick completes, it is saved in the person's own folder (for example, **My Drive / Candidates / their name**), and a Slack message says who signed with a link to it in Suresign.
+  </Accordion>
+  <Accordion title="Tell the team when it's signed">
+    When a document completes or is declined, a message in Slack or Teams gives its title, who signed, and a link to it in Suresign. The document itself is never posted.
+  </Accordion>
+  <Accordion title="Every document in a sheet">
+    When a document is sent, signed, completes, or is declined, its row in Google Sheets is added or updated with the title, people, status, and dates.
+  </Accordion>
+</AccordionGroup>
+
+A new connection does nothing until you turn on a recipe or a setting.
+
+## Connect an app
+
+<Steps>
+  <Step title="Open the app's page">
+    Go to **Integrations** and select the app.
+  </Step>
+  <Step title="Connect">
+    Select **Connect**. Suresign lists what it will ask the app for before you sign in. Then sign in on the app's own page and approve access.
+  </Step>
+  <Step title="Choose what it does">
+    Pick a folder, channel, or spreadsheet, and turn on the recipes you want.
+  </Step>
+</Steps>
+
+Each app's page shows its recent activity. If a save or post fails, select **Retry** to try it again.
+
+## Who can connect what
+
+- **Admins** connect apps for the whole workspace.
+- **Members** can connect their own Google Drive, Dropbox, or OneDrive to pick files when adding a document, but only after an admin approves that app. Manage your own accounts in **Settings** > **Connected accounts**.
+- A member can ask an admin to connect an app, approve it, or turn on a recipe from the app's page.
+
+## Access you can see
+
+<CardGroup cols={2}>
+  <Card title="Only what the job needs" icon="scan">
+    In Google Drive, Suresign sees only the files it saved or someone chose. In Slack, it posts only where you pick.
+  </Card>
+  <Card title="Keys locked away" icon="lock">
+    Access is encrypted, stays on Suresign's servers, and is used only for what the connection does.
+  </Card>
+  <Card title="One click to end it" icon="unplug">
+    Disconnect and the access ends at once. Files already saved stay yours.
+  </Card>
+  <Card title="On the record" icon="file-clock">
+    Connecting, turning on, and disconnecting go in the audit trail, with who did it.
+  </Card>
+</CardGroup>
+
+## Use integrations with the agent
+
+The agent can see your connected apps and what failed in the last week. It can:
+
+- Find PDFs and Word files in your connected storage and start a draft document from one.
+- Save a completed document's signed PDF to storage, or post about it in Slack or Teams, right now.
+- Turn on a recipe for an app that is already connected (admins only).
+
+Saving and posting wait for your approval, like everything else the agent does that reaches outside Suresign. See [Staying in control](/agent/staying-in-control).
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Webhooks" icon="webhook" href="/developers/webhooks">
+    Hear about document events in your own systems.
+  </Card>
+  <Card title="Plans and billing" icon="credit-card" href="/workspace/plans-and-billing">
+    See which plans include each app.
+  </Card>
+</CardGroup>
